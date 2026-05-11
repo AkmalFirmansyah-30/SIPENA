@@ -16,5 +16,10 @@ namespace SIPENA.view
         {
             InitializeComponent();
         }
+
+        private void FrmMenuUtama_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

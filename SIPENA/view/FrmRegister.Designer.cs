@@ -119,6 +119,7 @@
             this.btnRegister.TabIndex = 17;
             this.btnRegister.Text = "REGISTER";
             this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // txtPassword
             // 
@@ -130,6 +131,7 @@
             this.txtPassword.Size = new System.Drawing.Size(265, 34);
             this.txtPassword.TabIndex = 16;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtNama
             // 
@@ -141,6 +143,7 @@
             this.txtNama.Size = new System.Drawing.Size(265, 34);
             this.txtNama.TabIndex = 15;
             this.txtNama.UseSystemPasswordChar = true;
+            this.txtNama.TextChanged += new System.EventHandler(this.txtNama_TextChanged);
             // 
             // label7
             // 
@@ -213,6 +216,7 @@
             this.txtUsername.Size = new System.Drawing.Size(265, 34);
             this.txtUsername.TabIndex = 21;
             this.txtUsername.UseSystemPasswordChar = true;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // label9
             // 
@@ -231,10 +235,15 @@
             this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRole.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRole.FormattingEnabled = true;
+            this.cmbRole.Items.AddRange(new object[] {
+            "Admin",
+            "Dosen",
+            "Mahasiswa"});
             this.cmbRole.Location = new System.Drawing.Point(388, 216);
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Size = new System.Drawing.Size(263, 33);
             this.cmbRole.TabIndex = 22;
+            this.cmbRole.SelectedIndexChanged += new System.EventHandler(this.cmbRole_SelectedIndexChanged);
             // 
             // lblKembaliLogin
             // 
@@ -247,6 +256,7 @@
             this.lblKembaliLogin.TabIndex = 23;
             this.lblKembaliLogin.Text = "< Kembali ke Login";
             this.lblKembaliLogin.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblKembaliLogin.Click += new System.EventHandler(this.lblKembaliLogin_Click);
             // 
             // FrmRegister
             // 
