@@ -1,4 +1,6 @@
-﻿using SIPENA.model;
+﻿using SIPENA.konfigurasi;
+using SIPENA.model;
+using SIPENA.service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,15 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SIPENA.konfigurasi;
-using SIPENA.model;
 
 namespace SIPENA.view
 {
     public partial class FrmLogin : Form
     {
-        // Membuat jembatan koneksi ke database
-        Koneksi server = new Koneksi();
+        // Memanggil class Auth_Serv sebagai otak pemroses data
+        Auth_Serv auth = new Auth_Serv();
 
         public FrmLogin()
         {
@@ -45,39 +45,48 @@ namespace SIPENA.view
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // A. Validasi Mencegah Input Kosong
+            // Validasi Mencegah Input Kosong (Tugas View)
             if (txtUsername.Text == "" || txtPassword.Text == "")
             {
                 MessageBox.Show("Username dan Password tidak boleh kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // B. Cocokkan ketikan dengan data di tabel users
-            string query = "SELECT * FROM users WHERE username='" + txtUsername.Text + "' AND password='" + txtPassword.Text + "'";
-            DataTable dt = server.eksekusiQuery(query);
+            // Minta Auth_Serv mengecek kecocokan data ke database
+            DataTable dt = auth.Login(txtUsername.Text, txtPassword.Text);
 
-            // C. Jika data ditemukan (jumlah baris lebih dari 0)
+            // Jika data ditemukan (jumlah baris lebih dari 0)
             if (dt.Rows.Count > 0)
             {
-                // D. Simpan identitas ke class SesiLogin agar diingat sistem
+                // Simpan identitas ke class SesiLogin agar diingat sistem
                 SesiLogin.Username = dt.Rows[0]["username"].ToString();
                 SesiLogin.NamaLengkap = dt.Rows[0]["nama_lengkap"].ToString();
                 SesiLogin.Role = dt.Rows[0]["role"].ToString();
 
                 MessageBox.Show("Selamat Datang, " + SesiLogin.NamaLengkap + "!", "Login Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // E. Buka halaman Menu Utama dan sembunyikan form login
+                // Buka halaman Menu Utama dan sembunyikan form login
                 FrmMenuUtama menu = new FrmMenuUtama();
                 menu.Show();
                 this.Hide();
             }
             else
             {
-                // F. Jika username/password tidak ada di database
+                // Jika username/password tidak ada di database
                 MessageBox.Show("Username atau Password salah!", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPassword.Clear();
                 txtPassword.Focus(); // Kembalikan kursor ke kolom password
             }
+        }
+
+        private void lblDaftar_Click(object sender, EventArgs e)
+        {
+            // Memanggil dan menampilkan form Register
+            FrmRegister register = new FrmRegister();
+            register.Show();
+
+            // Menyembunyikan form Login agar layarnya berganti
+            this.Hide();
         }
     }
 }

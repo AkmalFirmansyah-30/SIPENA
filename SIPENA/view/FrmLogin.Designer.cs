@@ -32,7 +32,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblDaftar = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -40,10 +42,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -96,9 +97,20 @@
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SIPENA.Properties.Resources.Logo_PNC;
+            this.pictureBox1.Location = new System.Drawing.Point(117, 63);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.lblDaftar);
             this.panel3.Controls.Add(this.btnLogin);
             this.panel3.Controls.Add(this.txtPassword);
             this.panel3.Controls.Add(this.txtUsername);
@@ -112,12 +124,25 @@
             this.panel3.Size = new System.Drawing.Size(325, 403);
             this.panel3.TabIndex = 2;
             // 
+            // lblDaftar
+            // 
+            this.lblDaftar.AutoSize = true;
+            this.lblDaftar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDaftar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblDaftar.Location = new System.Drawing.Point(97, 289);
+            this.lblDaftar.Name = "lblDaftar";
+            this.lblDaftar.Size = new System.Drawing.Size(187, 15);
+            this.lblDaftar.TabIndex = 24;
+            this.lblDaftar.Text = "Belum punya akun? Daftar di sini";
+            this.lblDaftar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblDaftar.Click += new System.EventHandler(this.lblDaftar_Click);
+            // 
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.Goldenrod;
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Location = new System.Drawing.Point(34, 299);
+            this.btnLogin.Location = new System.Drawing.Point(34, 320);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(263, 43);
             this.btnLogin.TabIndex = 9;
@@ -197,16 +222,6 @@
             this.label4.Text = "Selamat Datang";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::SIPENA.Properties.Resources.Logo_PNC;
-            this.pictureBox1.Location = new System.Drawing.Point(117, 63);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -215,12 +230,13 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Name = "FrmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,5 +255,6 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Label lblDaftar;
     }
 }

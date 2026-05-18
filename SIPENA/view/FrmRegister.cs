@@ -1,4 +1,4 @@
-﻿using SIPENA.konfigurasi;
+﻿using SIPENA.service; 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +14,8 @@ namespace SIPENA.view
 {
     public partial class FrmRegister : Form
     {
-        // Membuat jembatan koneksi ke database
-        Koneksi server = new Koneksi();
+        // Memanggil class Auth_Serv sebagai otak pemroses data
+        Auth_Serv auth = new Auth_Serv();
 
         public FrmRegister()
         {
@@ -56,24 +56,19 @@ namespace SIPENA.view
                 return;
             }
 
-            // 2. Validasi: Cek apakah Username sudah pernah dipakai di database
-            string cekQuery = "SELECT * FROM users WHERE username='" + txtUsername.Text + "'";
-            DataTable dt = server.eksekusiQuery(cekQuery);
-
-            if (dt.Rows.Count > 0)
+            // 2. Minta Auth_Serv mengecek apakah Username sudah ada di database
+            if (auth.CekUsername(txtUsername.Text) == true)
             {
                 MessageBox.Show("Username sudah terdaftar! Silakan gunakan username lain.", "Pendaftaran Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUsername.Focus(); // Kembalikan kursor ke kolom username
                 return;
             }
 
-            // 3. Eksekusi: Masukkan data baru ke tabel users
-            string insertQuery = "INSERT INTO users (username, password, nama_lengkap, role) VALUES ('" + txtUsername.Text + "', '" + txtPassword.Text + "', '" + txtNama.Text + "', '" + cmbRole.Text + "')";
-
-            int hasil = server.eksekusiBukanQuery(insertQuery);
+            // 3. Minta Auth_Serv menyimpan data user baru
+            bool sukses = auth.Register(txtUsername.Text, txtPassword.Text, txtNama.Text, cmbRole.Text);
 
             // 4. Cek apakah penyimpanan berhasil
-            if (hasil > 0)
+            if (sukses == true)
             {
                 MessageBox.Show("Akun berhasil dibuat! Silakan login menggunakan akun baru Anda.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
