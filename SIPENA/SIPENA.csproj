@@ -106,12 +106,32 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Dashboard.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logo-PNC.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_medal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dosen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mhs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Matkul.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
