@@ -110,7 +110,7 @@
     <None Include="Resources\Dashboard.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Logo-PNC.png" />
+    <None Include="Resources\Logo_PNC.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user %282%29.png" />

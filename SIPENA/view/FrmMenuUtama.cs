@@ -19,7 +19,37 @@ namespace SIPENA.view
 
         private void FrmMenuUtama_Load(object sender, EventArgs e)
         {
+            // Set image untuk semua PictureBox dari Resources
+            try
+            {
+                // Logo
+                pictureBox1.Image = SIPENA.Properties.Resources.Logo_PNC;
 
+                // Icon Dashboard
+                pictureBox2.Image = SIPENA.Properties.Resources.Dashboard;
+
+                // Icon Mahasiswa
+                icon_mhs.Image = SIPENA.Properties.Resources.user__2_;
+
+                // Icon Dosen
+                icon_dosen.Image = SIPENA.Properties.Resources.dosen;
+
+                // Icon Matkul
+                iconmatkul.Image = SIPENA.Properties.Resources.Matkul;
+
+                // Icon Presensi
+                icnpresensi.Image = SIPENA.Properties.Resources.icon_user;
+
+                // Icon Nilai
+                pictureBox7.Image = SIPENA.Properties.Resources.icon_medal;
+
+                // Icon Logout
+                pictureBox8.Image = SIPENA.Properties.Resources.icon_logout;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading images: " + ex.Message);
+            }
         }
 
         private void label3_Click(object sender, EventArgs e)
