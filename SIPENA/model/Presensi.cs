@@ -12,6 +12,8 @@ namespace SIPENA.model
         public DateTime Tanggal { get; set; }
         public string Nim { get; set; }
         public string KodeMk { get; set; }
+        public int Pertemuan { get; set; }
         public string StatusHadir { get; set; }
+        public int Semester { get; set; }
     }
 }

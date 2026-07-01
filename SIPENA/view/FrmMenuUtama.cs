@@ -15,8 +15,8 @@ namespace SIPENA.view
 {
     public partial class FrmMenuUtama : Form
     {
-        // Variable untuk menyimpan reference ke child form yang terbuka
-        private FrmPresensi frmPresensiActive = null;
+        // 1. REVISI: Gunakan variabel tipe 'Form' umum, bukan khusus FrmPresensi
+        private Form activeForm = null;
 
         public FrmMenuUtama()
         {
@@ -36,11 +36,11 @@ namespace SIPENA.view
             {
                 pictureBox1.Image = SIPENA.Properties.Resources.Logo_PNC;
                 icondashboard.Image = SIPENA.Properties.Resources.Dashboard;
-                icon_mhs.Image = SIPENA.Properties.Resources.user__2_;
-                icon_dosen.Image = SIPENA.Properties.Resources.dosen;
-                iconmatkul.Image = SIPENA.Properties.Resources.Matkul;
+                icnMhs.Image = SIPENA.Properties.Resources.user__2_;
+                icnDosen.Image = SIPENA.Properties.Resources.dosen;
+                icnMatkul.Image = SIPENA.Properties.Resources.Matkul;
                 icnpresensi.Image = SIPENA.Properties.Resources.icon_user;
-                pictureBox7.Image = SIPENA.Properties.Resources.icon_medal;
+                icnNilai.Image = SIPENA.Properties.Resources.icon_medal;
                 icnLogout.Image = SIPENA.Properties.Resources.icon_logout;
             }
             catch (Exception ex)
@@ -48,8 +48,90 @@ namespace SIPENA.view
                 MessageBox.Show("Error loading images: " + ex.Message);
             }
 
+            // Atur visibilitas menu berdasarkan role user
+            AturHakAksesMenu();
+
             // --- 3. PANGGIL FUNGSI HITUNG DATA DASHBOARD ---
             TampilDataDashboard();
+        }
+
+        private void AturHakAksesMenu()
+        {
+            // 1. SEMBUNYIKAN SEMUA MENU TERLEBIH DAHULU (Default Closed)
+            // Kategori (Designer names: label11 = Master Data, label8 = Transaksi)
+            if (label11 != null) label11.Visible = false;
+            if (label8 != null) label8.Visible = false;
+
+            // Menu / ikon
+            if (labelMhs != null) labelMhs.Visible = false;
+            if (icnMhs != null) icnMhs.Visible = false;
+            if (labelDosen != null) labelDosen.Visible = false;
+            if (icnDosen != null) icnDosen.Visible = false;
+            if (labelMatkul != null) labelMatkul.Visible = false;
+            if (icnMatkul != null) icnMatkul.Visible = false;
+            if (labelPresensi != null) labelPresensi.Visible = false;
+            if (icnpresensi != null) icnpresensi.Visible = false;
+            if (labelNilai != null) labelNilai.Visible = false;
+            if (icnNilai != null) icnNilai.Visible = false;
+
+            // 2. TAMPILKAN MENU BERDASARKAN ROLE
+            string roleUser = (SesiLogin.Role ?? string.Empty).ToLower();
+
+            if (roleUser == "admin")
+            {
+                // ADMIN: tampilkan semua kategori dan menu
+                if (label11 != null) label11.Visible = true;
+                if (label8 != null) label8.Visible = true;
+
+                if (labelMhs != null) labelMhs.Visible = true;
+                if (icnMhs != null) icnMhs.Visible = true;
+                if (labelDosen != null) labelDosen.Visible = true;
+                if (icnDosen != null) icnDosen.Visible = true;
+                if (labelMatkul != null) labelMatkul.Visible = true;
+                if (icnMatkul != null) icnMatkul.Visible = true;
+                if (labelPresensi != null) labelPresensi.Visible = true;
+                if (icnpresensi != null) icnpresensi.Visible = true;
+                if (labelNilai != null) labelNilai.Visible = true;
+                if (icnNilai != null) icnNilai.Visible = true;
+            }
+            else if (roleUser == "dosen")
+            {
+                // DOSEN: tampilkan kategori yang relevan dan hanya menu matkul, presensi, nilai
+                if (label11 != null) label11.Visible = true;
+                if (label8 != null) label8.Visible = true;
+
+                if (labelMatkul != null) labelMatkul.Visible = true;
+                if (icnMatkul != null) icnMatkul.Visible = true;
+                if (labelPresensi != null) labelPresensi.Visible = true;
+                if (icnpresensi != null) icnpresensi.Visible = true;
+                if (labelNilai != null) labelNilai.Visible = true;
+                if (icnNilai != null) icnNilai.Visible = true;
+
+                // Pastikan data Mhs and Dosen tetap tersembunyi
+                if (labelMhs != null) labelMhs.Visible = false;
+                if (icnMhs != null) icnMhs.Visible = false;
+                if (labelDosen != null) labelDosen.Visible = false;
+                if (icnDosen != null) icnDosen.Visible = false;
+            }
+            else if (roleUser == "mahasiswa")
+            {
+                // MAHASISWA: tampilkan kategori yang relevan dan hanya menu mahasiswa (profil), presensi, nilai
+                if (label11 != null) label11.Visible = true;
+                if (label8 != null) label8.Visible = true;
+
+                if (labelMhs != null) labelMhs.Visible = true;
+                if (icnMhs != null) icnMhs.Visible = true;
+                if (labelPresensi != null) labelPresensi.Visible = true;
+                if (icnpresensi != null) icnpresensi.Visible = true;
+                if (labelNilai != null) labelNilai.Visible = true;
+                if (icnNilai != null) icnNilai.Visible = true;
+
+                // Pastikan data Dosen dan Matkul tetap tersembunyi
+                if (labelDosen != null) labelDosen.Visible = false;
+                if (icnDosen != null) icnDosen.Visible = false;
+                if (labelMatkul != null) labelMatkul.Visible = false;
+                if (icnMatkul != null) icnMatkul.Visible = false;
+            }
         }
 
         private void TampilDataDashboard()
@@ -95,32 +177,32 @@ namespace SIPENA.view
         }
 
         /// <summary>
-        /// Membuka Form Presensi sebagai child form di area dashboard bagian bawah
+        /// Fungsi umum untuk membuka form apapun sebagai child form
         /// </summary>
-        private void BukaFormPresensi()
+        private void BukaForm(Form childForm)
         {
-            // Jika form presensi sudah terbuka, tutup terlebih dahulu
-            if (frmPresensiActive != null && !frmPresensiActive.IsDisposed)
+            // Jika ada form lain yang sedang terbuka, tutup dulu
+            if (activeForm != null && !activeForm.IsDisposed)
             {
-                frmPresensiActive.Close();
+                activeForm.Close();
             }
 
-            // 1. Bersihkan HANYA wadah form-nya saja (jangan panel1 agar kotak info aman)
+            // Set form yang baru diklik sebagai form aktif
+            activeForm = childForm;
+
+            // Atur agar form kehilangan border dan siap masuk panel
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+
+            // Set AutoScaleMode ke None agar tidak ada scaling issues
+            childForm.AutoScaleMode = AutoScaleMode.None;
+
+            // Masukkan ke pnlWadahForm dan tampilkan
             pnlWadahForm.Controls.Clear();
-
-            // 2. Buat instance baru dari FrmPresensi
-            frmPresensiActive = new FrmPresensi();
-
-            // 3. Set form agar tidak memiliki border (hilangkan tombol X, kotak, min)
-            frmPresensiActive.TopLevel = false;
-            frmPresensiActive.FormBorderStyle = FormBorderStyle.None;
-
-            // 4. Set agar form menyesuaikan ukuran panel wadah barunya
-            frmPresensiActive.Dock = DockStyle.Fill;
-
-            // 5. Masukkan ke pnlWadahForm dan tampilkan
-            pnlWadahForm.Controls.Add(frmPresensiActive);
-            frmPresensiActive.Show();
+            pnlWadahForm.Controls.Add(childForm);
+            childForm.BringToFront();
+            childForm.Show();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -150,16 +232,15 @@ namespace SIPENA.view
 
         private void labelPresensi_Click(object sender, EventArgs e)
         {
-            BukaFormPresensi();
+            BukaForm(new FrmPresensi());
         }
 
         private void labelDashboard_Click(object sender, EventArgs e)
         {
-            // Cukup tutup form presensi jika sedang terbuka, 
-            // otomatis area bawah akan kembali kosong/bersih.
-            if (frmPresensiActive != null && !frmPresensiActive.IsDisposed)
+            // Tutup form aktif agar kembali ke dashboard kosong
+            if (activeForm != null && !activeForm.IsDisposed)
             {
-                frmPresensiActive.Close();
+                activeForm.Close();
             }
         }
 
@@ -168,15 +249,15 @@ namespace SIPENA.view
         /// </summary>
         private void icnpresensi_Click(object sender, EventArgs e)
         {
-            BukaFormPresensi();
+            BukaForm(new FrmPresensi());
         }
 
         private void icondashboard_Click(object sender, EventArgs e)
         {
-            // Tutup saja form anak yang sedang aktif
-            if (frmPresensiActive != null && !frmPresensiActive.IsDisposed)
+            // Tutup form anak yang sedang aktif
+            if (activeForm != null && !activeForm.IsDisposed)
             {
-                frmPresensiActive.Close();
+                activeForm.Close();
             }
         }
 
@@ -211,6 +292,48 @@ namespace SIPENA.view
         private void icnLogout_Click(object sender, EventArgs e)
         {
             ProsesLogout();
+        }
+
+        private void labelNilai_Click(object sender, EventArgs e)
+        {
+            BukaForm(new FrmNilai());
+        }
+
+        private void icnNilai_Click(object sender, EventArgs e)
+        {
+            BukaForm(new FrmNilai());
+        }
+
+        private void icnMhs_Click(object sender, EventArgs e)
+        {
+            // Buka form mahasiswa
+            BukaForm(new FrmMahasiswa());
+        }
+
+        private void labelMhs_Click(object sender, EventArgs e)
+        {
+            // Buka form mahasiswa
+            BukaForm(new FrmMahasiswa());
+        }
+
+        private void icnDosen_Click(object sender, EventArgs e)
+        {
+            BukaForm(new Dosen_frm());
+        }
+
+        private void labelDosen_Click(object sender, EventArgs e)
+        {
+            BukaForm(new Dosen_frm());
+        }
+
+        private void icnMatkul_Click(object sender, EventArgs e)
+        {
+            BukaForm(new Matkul_frm());
+        }
+
+        private void labelMatkul_Click(object sender, EventArgs e)
+        {
+            BukaForm(new Matkul_frm());
         }
     }
 }

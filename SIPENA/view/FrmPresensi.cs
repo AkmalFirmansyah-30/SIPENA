@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SIPENA.service;
 using SIPENA.model;
@@ -19,6 +13,9 @@ namespace SIPENA.view
         public FrmPresensi()
         {
             InitializeComponent();
+
+            dgvPresensi.AutoGenerateColumns = false;
+
             TampilkanData();
         }
 
@@ -32,7 +29,13 @@ namespace SIPENA.view
             dtpTanggal.Value = DateTime.Now;
             txtNim.Clear();
             txtKodeMk.Clear();
-            cmbStatus.SelectedIndex = -1;
+            txtPertemuan.Clear();
+
+            rbHadir.Checked = false;
+            rbIzin.Checked = false;
+            rbSakit.Checked = false;
+            rbAlpha.Checked = false;
+
             txtNim.Focus();
         }
 
@@ -41,40 +44,67 @@ namespace SIPENA.view
             try
             {
                 Presensi p = new Presensi();
+
                 p.Tanggal = dtpTanggal.Value;
                 p.Nim = txtNim.Text;
                 p.KodeMk = txtKodeMk.Text;
-                p.StatusHadir = cmbStatus.Text;
+                p.Pertemuan = Convert.ToInt32(txtPertemuan.Text);
+
+                if (rbHadir.Checked)
+                    p.StatusHadir = "Hadir";
+                else if (rbIzin.Checked)
+                    p.StatusHadir = "Izin";
+                else if (rbSakit.Checked)
+                    p.StatusHadir = "Sakit";
+                else if (rbAlpha.Checked)
+                    p.StatusHadir = "Alpha";
 
                 int hasil = service.Simpan(p);
 
                 if (hasil > 0)
                 {
-                    MessageBox.Show("Data Presensi Berhasil Disimpan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(
+                        "Data Presensi Berhasil Disimpan!",
+                        "Sukses",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
                     TampilkanData();
                     ClearForm();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Terjadi Kesalahan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Terjadi Kesalahan: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
         private void btnUbah_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Silakan pilih data pada tabel di bawah untuk melakukan perubahan.", "Informasi");
+            MessageBox.Show(
+                "Silakan pilih data pada tabel di bawah untuk melakukan perubahan.",
+                "Informasi");
         }
 
         private void btnHapus_Click(object sender, EventArgs e)
         {
             try
             {
-                int id = int.Parse(dgvPresensi.CurrentRow.Cells[0].Value.ToString());
+                int id = int.Parse(
+                    dgvPresensi.CurrentRow.Cells[0].Value.ToString());
 
-                if (MessageBox.Show("Yakin ingin menghapus data presensi ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(
+                    "Yakin ingin menghapus data presensi ini?",
+                    "Konfirmasi",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     int hasil = service.Hapus(id);
+
                     if (hasil > 0)
                     {
                         TampilkanData();
@@ -84,7 +114,8 @@ namespace SIPENA.view
             }
             catch (Exception)
             {
-                MessageBox.Show("Pilih baris data yang ingin dihapus pada tabel.");
+                MessageBox.Show(
+                    "Pilih baris data yang ingin dihapus pada tabel.");
             }
         }
 
@@ -100,10 +131,58 @@ namespace SIPENA.view
 
         private void label6_Click(object sender, EventArgs e)
         {
+
         }
 
         private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
+
+        }
+
+    
+      
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPertemuan.Text.Length > 0 &&
+                !txtPertemuan.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Pertemuan hanya boleh angka!");
+                txtPertemuan.Clear();
+            }
+        }
+
+        private void rbHadir_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbIzin_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbSakit_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbAlpha_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNim_Leave(object sender, EventArgs e)
+        {
+            if (txtNim.Text.Trim() != "")
+            {
+                int semester = service.AmbilSemester(txtNim.Text.Trim());
+
+                if (semester > 0)
+                    txtSemester.Text = semester.ToString();
+                else
+                    txtSemester.Text = "";
+            }
         }
     }
 }

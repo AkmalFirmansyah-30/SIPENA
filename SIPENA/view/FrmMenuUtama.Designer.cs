@@ -36,18 +36,18 @@
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.icnLogout = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.icnNilai = new System.Windows.Forms.PictureBox();
             this.icnpresensi = new System.Windows.Forms.PictureBox();
-            this.iconmatkul = new System.Windows.Forms.PictureBox();
-            this.icon_dosen = new System.Windows.Forms.PictureBox();
-            this.icon_mhs = new System.Windows.Forms.PictureBox();
+            this.icnMatkul = new System.Windows.Forms.PictureBox();
+            this.icnDosen = new System.Windows.Forms.PictureBox();
+            this.icnMhs = new System.Windows.Forms.PictureBox();
             this.icondashboard = new System.Windows.Forms.PictureBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.labelNilai = new System.Windows.Forms.Label();
             this.labelPresensi = new System.Windows.Forms.Label();
             this.labelLogout = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.labelMatkul = new System.Windows.Forms.Label();
+            this.labelDosen = new System.Windows.Forms.Label();
+            this.labelMhs = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.lblRoleUser = new System.Windows.Forms.Label();
             this.lblNamaUser = new System.Windows.Forms.Label();
@@ -56,9 +56,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlWadahForm = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label18 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblAngkaMhs = new System.Windows.Forms.Label();
@@ -76,17 +76,17 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pnlWadahForm = new System.Windows.Forms.Panel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icnLogout)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icnNilai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icnpresensi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconmatkul)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.icon_dosen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.icon_mhs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icnMatkul)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icnDosen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icnMhs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icondashboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -106,18 +106,18 @@
             this.panel1.Controls.Add(this.flowLayoutPanel5);
             this.panel1.Controls.Add(this.flowLayoutPanel3);
             this.panel1.Controls.Add(this.icnLogout);
-            this.panel1.Controls.Add(this.pictureBox7);
+            this.panel1.Controls.Add(this.icnNilai);
             this.panel1.Controls.Add(this.icnpresensi);
-            this.panel1.Controls.Add(this.iconmatkul);
-            this.panel1.Controls.Add(this.icon_dosen);
-            this.panel1.Controls.Add(this.icon_mhs);
+            this.panel1.Controls.Add(this.icnMatkul);
+            this.panel1.Controls.Add(this.icnDosen);
+            this.panel1.Controls.Add(this.icnMhs);
             this.panel1.Controls.Add(this.icondashboard);
-            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.labelNilai);
             this.panel1.Controls.Add(this.labelPresensi);
             this.panel1.Controls.Add(this.labelLogout);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.labelMatkul);
+            this.panel1.Controls.Add(this.labelDosen);
+            this.panel1.Controls.Add(this.labelMhs);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.lblRoleUser);
             this.panel1.Controls.Add(this.lblNamaUser);
@@ -198,15 +198,16 @@
             this.icnLogout.TabStop = false;
             this.icnLogout.Click += new System.EventHandler(this.icnLogout_Click);
             // 
-            // pictureBox7
+            // icnNilai
             // 
-            this.pictureBox7.Image = global::SIPENA.Properties.Resources.icon_medal;
-            this.pictureBox7.Location = new System.Drawing.Point(38, 508);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 24;
-            this.pictureBox7.TabStop = false;
+            this.icnNilai.Image = global::SIPENA.Properties.Resources.icon_medal;
+            this.icnNilai.Location = new System.Drawing.Point(38, 508);
+            this.icnNilai.Name = "icnNilai";
+            this.icnNilai.Size = new System.Drawing.Size(25, 25);
+            this.icnNilai.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icnNilai.TabIndex = 24;
+            this.icnNilai.TabStop = false;
+            this.icnNilai.Click += new System.EventHandler(this.icnNilai_Click);
             // 
             // icnpresensi
             // 
@@ -219,35 +220,38 @@
             this.icnpresensi.TabStop = false;
             this.icnpresensi.Click += new System.EventHandler(this.icnpresensi_Click);
             // 
-            // iconmatkul
+            // icnMatkul
             // 
-            this.iconmatkul.Image = global::SIPENA.Properties.Resources.Matkul;
-            this.iconmatkul.Location = new System.Drawing.Point(38, 389);
-            this.iconmatkul.Name = "iconmatkul";
-            this.iconmatkul.Size = new System.Drawing.Size(25, 25);
-            this.iconmatkul.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.iconmatkul.TabIndex = 22;
-            this.iconmatkul.TabStop = false;
+            this.icnMatkul.Image = global::SIPENA.Properties.Resources.Matkul;
+            this.icnMatkul.Location = new System.Drawing.Point(38, 389);
+            this.icnMatkul.Name = "icnMatkul";
+            this.icnMatkul.Size = new System.Drawing.Size(25, 25);
+            this.icnMatkul.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icnMatkul.TabIndex = 22;
+            this.icnMatkul.TabStop = false;
+            this.icnMatkul.Click += new System.EventHandler(this.icnMatkul_Click);
             // 
-            // icon_dosen
+            // icnDosen
             // 
-            this.icon_dosen.Image = global::SIPENA.Properties.Resources.dosen;
-            this.icon_dosen.Location = new System.Drawing.Point(38, 354);
-            this.icon_dosen.Name = "icon_dosen";
-            this.icon_dosen.Size = new System.Drawing.Size(25, 25);
-            this.icon_dosen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.icon_dosen.TabIndex = 21;
-            this.icon_dosen.TabStop = false;
+            this.icnDosen.Image = global::SIPENA.Properties.Resources.dosen;
+            this.icnDosen.Location = new System.Drawing.Point(38, 354);
+            this.icnDosen.Name = "icnDosen";
+            this.icnDosen.Size = new System.Drawing.Size(25, 25);
+            this.icnDosen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icnDosen.TabIndex = 21;
+            this.icnDosen.TabStop = false;
+            this.icnDosen.Click += new System.EventHandler(this.icnDosen_Click);
             // 
-            // icon_mhs
+            // icnMhs
             // 
-            this.icon_mhs.Image = global::SIPENA.Properties.Resources.Mhs;
-            this.icon_mhs.Location = new System.Drawing.Point(38, 320);
-            this.icon_mhs.Name = "icon_mhs";
-            this.icon_mhs.Size = new System.Drawing.Size(25, 25);
-            this.icon_mhs.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.icon_mhs.TabIndex = 20;
-            this.icon_mhs.TabStop = false;
+            this.icnMhs.Image = global::SIPENA.Properties.Resources.Mhs;
+            this.icnMhs.Location = new System.Drawing.Point(38, 320);
+            this.icnMhs.Name = "icnMhs";
+            this.icnMhs.Size = new System.Drawing.Size(25, 25);
+            this.icnMhs.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icnMhs.TabIndex = 20;
+            this.icnMhs.TabStop = false;
+            this.icnMhs.Click += new System.EventHandler(this.icnMhs_Click);
             // 
             // icondashboard
             // 
@@ -260,17 +264,18 @@
             this.icondashboard.TabStop = false;
             this.icondashboard.Click += new System.EventHandler(this.icondashboard_Click);
             // 
-            // label17
+            // labelNilai
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label17.Location = new System.Drawing.Point(75, 511);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(42, 20);
-            this.label17.TabIndex = 18;
-            this.label17.Text = "Nilai";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelNilai.AutoSize = true;
+            this.labelNilai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNilai.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelNilai.Location = new System.Drawing.Point(75, 511);
+            this.labelNilai.Name = "labelNilai";
+            this.labelNilai.Size = new System.Drawing.Size(42, 20);
+            this.labelNilai.TabIndex = 18;
+            this.labelNilai.Text = "Nilai";
+            this.labelNilai.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelNilai.Click += new System.EventHandler(this.labelNilai_Click);
             // 
             // labelPresensi
             // 
@@ -298,41 +303,44 @@
             this.labelLogout.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.labelLogout.Click += new System.EventHandler(this.labelLogout_Click);
             // 
-            // label14
+            // labelMatkul
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label14.Location = new System.Drawing.Point(75, 392);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(99, 20);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "Data Matkul";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelMatkul.AutoSize = true;
+            this.labelMatkul.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMatkul.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelMatkul.Location = new System.Drawing.Point(75, 392);
+            this.labelMatkul.Name = "labelMatkul";
+            this.labelMatkul.Size = new System.Drawing.Size(99, 20);
+            this.labelMatkul.TabIndex = 15;
+            this.labelMatkul.Text = "Data Matkul";
+            this.labelMatkul.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelMatkul.Click += new System.EventHandler(this.labelMatkul_Click);
             // 
-            // label13
+            // labelDosen
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label13.Location = new System.Drawing.Point(75, 357);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(99, 20);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "Data Dosen";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelDosen.AutoSize = true;
+            this.labelDosen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDosen.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelDosen.Location = new System.Drawing.Point(75, 357);
+            this.labelDosen.Name = "labelDosen";
+            this.labelDosen.Size = new System.Drawing.Size(99, 20);
+            this.labelDosen.TabIndex = 14;
+            this.labelDosen.Text = "Data Dosen";
+            this.labelDosen.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelDosen.Click += new System.EventHandler(this.labelDosen_Click);
             // 
-            // label12
+            // labelMhs
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label12.Location = new System.Drawing.Point(75, 323);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 20);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Data Mhs";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelMhs.AutoSize = true;
+            this.labelMhs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMhs.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelMhs.Location = new System.Drawing.Point(75, 323);
+            this.labelMhs.Name = "labelMhs";
+            this.labelMhs.Size = new System.Drawing.Size(82, 20);
+            this.labelMhs.TabIndex = 13;
+            this.labelMhs.Text = "Data Mhs";
+            this.labelMhs.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelMhs.Click += new System.EventHandler(this.labelMhs_Click);
             // 
             // label11
             // 
@@ -430,6 +438,17 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // pnlWadahForm
+            // 
+            this.pnlWadahForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlWadahForm.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlWadahForm.Location = new System.Drawing.Point(200, 210);
+            this.pnlWadahForm.Name = "pnlWadahForm";
+            this.pnlWadahForm.Size = new System.Drawing.Size(1062, 410);
+            this.pnlWadahForm.TabIndex = 25;
+            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -448,12 +467,6 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(131, 20);
             this.toolStripStatusLabel1.Text = "Status: Koneksi OK";
             this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(180, 20);
-            this.toolStripStatusLabel2.Text = "User Aktif: Akmal (Admin)";
             // 
             // label18
             // 
@@ -644,15 +657,11 @@
             this.pictureBox6.TabIndex = 23;
             this.pictureBox6.TabStop = false;
             // 
-            // pnlWadahForm
+            // toolStripStatusLabel2
             // 
-            this.pnlWadahForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlWadahForm.Location = new System.Drawing.Point(238, 236);
-            this.pnlWadahForm.Name = "pnlWadahForm";
-            this.pnlWadahForm.Size = new System.Drawing.Size(985, 392);
-            this.pnlWadahForm.TabIndex = 23;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(180, 20);
+            this.toolStripStatusLabel2.Text = "User Aktif: Akmal (Admin)";
             // 
             // FrmMenuUtama
             // 
@@ -678,11 +687,11 @@
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.icnLogout)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icnNilai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icnpresensi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconmatkul)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.icon_dosen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.icon_mhs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icnMatkul)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icnDosen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icnMhs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icondashboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
@@ -704,9 +713,9 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlWadahForm;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -715,10 +724,10 @@
         private System.Windows.Forms.Label lblNamaUser;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label labelMatkul;
+        private System.Windows.Forms.Label labelDosen;
+        private System.Windows.Forms.Label labelMhs;
+        private System.Windows.Forms.Label labelNilai;
         private System.Windows.Forms.Label labelPresensi;
         private System.Windows.Forms.Label labelLogout;
         private System.Windows.Forms.Label label18;
@@ -731,12 +740,12 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.PictureBox icondashboard;
-        private System.Windows.Forms.PictureBox icon_mhs;
+        private System.Windows.Forms.PictureBox icnMhs;
         private System.Windows.Forms.PictureBox icnLogout;
-        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox icnNilai;
         private System.Windows.Forms.PictureBox icnpresensi;
-        private System.Windows.Forms.PictureBox iconmatkul;
-        private System.Windows.Forms.PictureBox icon_dosen;
+        private System.Windows.Forms.PictureBox icnMatkul;
+        private System.Windows.Forms.PictureBox icnDosen;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Panel panel4;
@@ -751,6 +760,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Panel pnlWadahForm;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
     }
 }

@@ -14,6 +14,7 @@ namespace SIPENA.konfigurasi
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         string link = "server=localhost;port=3306;database=sipena;uid=root;pwd=";
+        //string link = "server=localhost;port=3306;database=sipena;uid=root;pwd=";
 
         // Konstruktor
         public Koneksi()
