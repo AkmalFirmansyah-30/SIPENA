@@ -17,6 +17,8 @@ namespace SIPENA.view
             dgvPresensi.AutoGenerateColumns = false;
 
             TampilkanData();
+            // Atur hak akses sesuai role user
+            AturHakAkses();
         }
 
         private void TampilkanData()
@@ -127,6 +129,74 @@ namespace SIPENA.view
         private void btnTutup_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AturHakAkses()
+        {
+            // Set default states
+            btnSimpan.Visible = false;
+            btnUbah.Visible = false;
+            btnHapus.Visible = false;
+
+            txtNim.Enabled = true;
+            txtKodeMk.Enabled = true;
+            txtSemester.Enabled = true;
+            txtPertemuan.Enabled = true;
+            dtpTanggal.Enabled = true;
+            rbHadir.Enabled = true;
+            rbIzin.Enabled = true;
+            rbSakit.Enabled = true;
+            rbAlpha.Enabled = true;
+
+            string role = (SesiLogin.Role ?? string.Empty).ToLower();
+
+            if (role == "mahasiswa")
+            {
+                // Mahasiswa dapat input presensi
+                btnSimpan.Visible = true;
+                btnUbah.Visible = false;
+                btnHapus.Visible = false;
+
+                // semester diisi otomatis oleh sistem
+                txtSemester.Enabled = false;
+            }
+            else if (role == "dosen")
+            {
+                // Dosen hanya melihat rekap
+                btnSimpan.Visible = false;
+                btnUbah.Visible = false;
+                btnHapus.Visible = false;
+
+                txtNim.Enabled = false;
+                txtKodeMk.Enabled = false;
+                txtSemester.Enabled = false;
+                txtPertemuan.Enabled = false;
+                dtpTanggal.Enabled = false;
+
+                rbHadir.Enabled = false;
+                rbIzin.Enabled = false;
+                rbSakit.Enabled = false;
+                rbAlpha.Enabled = false;
+            }
+            else if (role == "admin")
+            {
+                // Admin dapat melihat dan menghapus
+                btnSimpan.Visible = false;
+                btnUbah.Visible = false;
+                btnHapus.Visible = true;
+
+                // Non-aktifkan input agar admin tidak mengubah data lewat form ini
+                txtNim.Enabled = false;
+                txtKodeMk.Enabled = false;
+                txtSemester.Enabled = false;
+                txtPertemuan.Enabled = false;
+                dtpTanggal.Enabled = false;
+
+                rbHadir.Enabled = false;
+                rbIzin.Enabled = false;
+                rbSakit.Enabled = false;
+                rbAlpha.Enabled = false;
+            }
         }
 
         private void label6_Click(object sender, EventArgs e)

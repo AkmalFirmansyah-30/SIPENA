@@ -27,9 +27,17 @@ namespace SIPENA.view
         {
             // --- 1. SET DATA USER AKTIF ---
             // (Sesuaikan nama toolStripStatusLabel1 dengan yang ada di Properties Anda)
-            lblNamaUser.Text = "Halo, " + SesiLogin.NamaLengkap + "!";
+            // Gunakan nama panggilan (kata pertama dari nama lengkap) untuk tampilan sidebar
+            string namaLengkap = SesiLogin.NamaLengkap ?? "User"; // Jaga-jaga jika data kosong
+            string[] potonganNama = namaLengkap.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string namaPanggilan = (potonganNama.Length > 0) ? potonganNama[0] : namaLengkap;
+
+            // Tampilkan nama panggilan di Sidebar
+            lblNamaUser.Text = "Halo, " + namaPanggilan + "!";
             lblRoleUser.Text = "Role: " + SesiLogin.Role;
-            toolStripStatusLabel1.Text = "User Aktif: " + SesiLogin.NamaLengkap + " (" + SesiLogin.Role + ")";
+
+            // (Opsional) Biarkan status bar tetap menampilkan nama lengkap
+            toolStripStatusLabel1.Text = "User Aktif: " + namaLengkap + " (" + SesiLogin.Role + ")";
 
             // --- 2. LOAD GAMBAR DARI RESOURCES (Kode Anda) ---
             try
@@ -73,7 +81,6 @@ namespace SIPENA.view
             if (icnpresensi != null) icnpresensi.Visible = false;
             if (labelNilai != null) labelNilai.Visible = false;
             if (icnNilai != null) icnNilai.Visible = false;
-
             // 2. TAMPILKAN MENU BERDASARKAN ROLE
             string roleUser = (SesiLogin.Role ?? string.Empty).ToLower();
 
@@ -96,46 +103,31 @@ namespace SIPENA.view
             }
             else if (roleUser == "dosen")
             {
-                // DOSEN: tampilkan kategori yang relevan dan hanya menu matkul, presensi, nilai
-                if (label11 != null) label11.Visible = true;
-                if (label8 != null) label8.Visible = true;
+                // DOSEN: hanya akses FrmPresensi dan FrmNilai (kategori Transaksi)
+                if (label8 != null) label8.Visible = true; // Transaksi
 
-                if (labelMatkul != null) labelMatkul.Visible = true;
-                if (icnMatkul != null) icnMatkul.Visible = true;
                 if (labelPresensi != null) labelPresensi.Visible = true;
                 if (icnpresensi != null) icnpresensi.Visible = true;
                 if (labelNilai != null) labelNilai.Visible = true;
                 if (icnNilai != null) icnNilai.Visible = true;
-
-                // Pastikan data Mhs and Dosen tetap tersembunyi
-                if (labelMhs != null) labelMhs.Visible = false;
-                if (icnMhs != null) icnMhs.Visible = false;
-                if (labelDosen != null) labelDosen.Visible = false;
-                if (icnDosen != null) icnDosen.Visible = false;
             }
             else if (roleUser == "mahasiswa")
             {
-                // MAHASISWA: tampilkan kategori yang relevan dan hanya menu mahasiswa (profil), presensi, nilai
-                if (label11 != null) label11.Visible = true;
-                if (label8 != null) label8.Visible = true;
+                // MAHASISWA: hanya akses FrmPresensi (kategori Transaksi)
+                if (label8 != null) label8.Visible = true; // Transaksi
 
-                if (labelMhs != null) labelMhs.Visible = true;
-                if (icnMhs != null) icnMhs.Visible = true;
                 if (labelPresensi != null) labelPresensi.Visible = true;
                 if (icnpresensi != null) icnpresensi.Visible = true;
-                if (labelNilai != null) labelNilai.Visible = true;
-                if (icnNilai != null) icnNilai.Visible = true;
-
-                // Pastikan data Dosen dan Matkul tetap tersembunyi
-                if (labelDosen != null) labelDosen.Visible = false;
-                if (icnDosen != null) icnDosen.Visible = false;
-                if (labelMatkul != null) labelMatkul.Visible = false;
-                if (icnMatkul != null) icnMatkul.Visible = false;
             }
         }
 
         private void TampilDataDashboard()
         {
+            // Set default values first
+            if (lblAngkaMhs != null) lblAngkaMhs.Text = "0";
+            if (lblAngkaDosen != null) lblAngkaDosen.Text = "0";
+            if (lblAngkaMatkul != null) lblAngkaMatkul.Text = "0";
+
             // Siapkan koneksi ke database Anda (Sesuaikan string koneksi ini dengan milik Anda)
             string connectionString = "Server=localhost;Database=sipena;Uid=root;Pwd=;";
 
@@ -145,28 +137,31 @@ namespace SIPENA.view
                 {
                     conn.Open();
 
-                    // 1. Hitung Total Mahasiswa (Ganti lblAngkaMhs dengan Name label Anda yang tulisan 120)
+                    // 1. Hitung Total Mahasiswa
                     string queryMhs = "SELECT COUNT(*) FROM mahasiswa";
                     using (MySqlCommand cmd = new MySqlCommand(queryMhs, conn))
                     {
-                        int totalMhs = Convert.ToInt32(cmd.ExecuteScalar());
-                        lblAngkaMhs.Text = totalMhs.ToString();
+                        object result = cmd.ExecuteScalar();
+                        int totalMhs = (result != null && result != DBNull.Value) ? Convert.ToInt32(result) : 0;
+                        if (lblAngkaMhs != null) lblAngkaMhs.Text = totalMhs.ToString();
                     }
 
-                    // 2. Hitung Total Dosen (Ganti lblAngkaDosen dengan Name label Anda yang tulisan 15)
+                    // 2. Hitung Total Dosen
                     string queryDosen = "SELECT COUNT(*) FROM dosen";
                     using (MySqlCommand cmd = new MySqlCommand(queryDosen, conn))
                     {
-                        int totalDosen = Convert.ToInt32(cmd.ExecuteScalar());
-                        lblAngkaDosen.Text = totalDosen.ToString();
+                        object result = cmd.ExecuteScalar();
+                        int totalDosen = (result != null && result != DBNull.Value) ? Convert.ToInt32(result) : 0;
+                        if (lblAngkaDosen != null) lblAngkaDosen.Text = totalDosen.ToString();
                     }
 
-                    // 3. Hitung Total Mata Kuliah (Ganti lblAngkaMatkul dengan Name label Anda yang tulisan 9)
+                    // 3. Hitung Total Mata Kuliah
                     string queryMatkul = "SELECT COUNT(*) FROM mata_kuliah";
                     using (MySqlCommand cmd = new MySqlCommand(queryMatkul, conn))
                     {
-                        int totalMatkul = Convert.ToInt32(cmd.ExecuteScalar());
-                        lblAngkaMatkul.Text = totalMatkul.ToString();
+                        object result = cmd.ExecuteScalar();
+                        int totalMatkul = (result != null && result != DBNull.Value) ? Convert.ToInt32(result) : 0;
+                        if (lblAngkaMatkul != null) lblAngkaMatkul.Text = totalMatkul.ToString();
                     }
                 }
                 catch (Exception ex)
@@ -203,6 +198,16 @@ namespace SIPENA.view
             pnlWadahForm.Controls.Add(childForm);
             childForm.BringToFront();
             childForm.Show();
+
+            // Ketika form child ditutup, refresh data dashboard agar total terupdate
+            childForm.FormClosed += (s, ev) =>
+            {
+                try
+                {
+                    TampilDataDashboard();
+                }
+                catch { }
+            };
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -242,6 +247,8 @@ namespace SIPENA.view
             {
                 activeForm.Close();
             }
+            // Refresh data dashboard setelah kembali ke dashboard
+            TampilDataDashboard();
         }
 
         /// <summary>
@@ -259,6 +266,8 @@ namespace SIPENA.view
             {
                 activeForm.Close();
             }
+            // Refresh data dashboard setelah kembali ke dashboard
+            TampilDataDashboard();
         }
 
         private void labelLogout_Click(object sender, EventArgs e)

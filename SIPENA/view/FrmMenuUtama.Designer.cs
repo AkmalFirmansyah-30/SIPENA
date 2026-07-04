@@ -31,10 +31,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.icnLogout = new System.Windows.Forms.PictureBox();
             this.icnNilai = new System.Windows.Forms.PictureBox();
             this.icnpresensi = new System.Windows.Forms.PictureBox();
@@ -76,11 +72,12 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icnLogout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icnNilai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icnpresensi)).BeginInit();
@@ -97,6 +94,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -129,7 +128,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 673);
+            this.panel1.Size = new System.Drawing.Size(232, 673);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -140,7 +139,7 @@
             this.flowLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 92);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(197, 4);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(230, 4);
             this.flowLayoutPanel1.TabIndex = 21;
             // 
             // flowLayoutPanel2
@@ -151,46 +150,10 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(801, 3);
             this.flowLayoutPanel2.TabIndex = 22;
             // 
-            // flowLayoutPanel5
-            // 
-            this.flowLayoutPanel5.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel5.Controls.Add(this.flowLayoutPanel6);
-            this.flowLayoutPanel5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 586);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(197, 4);
-            this.flowLayoutPanel5.TabIndex = 24;
-            // 
-            // flowLayoutPanel6
-            // 
-            this.flowLayoutPanel6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(801, 3);
-            this.flowLayoutPanel6.TabIndex = 22;
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel4);
-            this.flowLayoutPanel3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 191);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(197, 4);
-            this.flowLayoutPanel3.TabIndex = 23;
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(801, 3);
-            this.flowLayoutPanel4.TabIndex = 22;
-            // 
             // icnLogout
             // 
             this.icnLogout.Image = global::SIPENA.Properties.Resources.icon_logout;
-            this.icnLogout.Location = new System.Drawing.Point(52, 596);
+            this.icnLogout.Location = new System.Drawing.Point(61, 597);
             this.icnLogout.Name = "icnLogout";
             this.icnLogout.Size = new System.Drawing.Size(25, 25);
             this.icnLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -201,7 +164,7 @@
             // icnNilai
             // 
             this.icnNilai.Image = global::SIPENA.Properties.Resources.icon_medal;
-            this.icnNilai.Location = new System.Drawing.Point(38, 508);
+            this.icnNilai.Location = new System.Drawing.Point(52, 508);
             this.icnNilai.Name = "icnNilai";
             this.icnNilai.Size = new System.Drawing.Size(25, 25);
             this.icnNilai.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -212,7 +175,7 @@
             // icnpresensi
             // 
             this.icnpresensi.Image = global::SIPENA.Properties.Resources.icon_user;
-            this.icnpresensi.Location = new System.Drawing.Point(38, 470);
+            this.icnpresensi.Location = new System.Drawing.Point(52, 470);
             this.icnpresensi.Name = "icnpresensi";
             this.icnpresensi.Size = new System.Drawing.Size(25, 25);
             this.icnpresensi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -223,7 +186,7 @@
             // icnMatkul
             // 
             this.icnMatkul.Image = global::SIPENA.Properties.Resources.Matkul;
-            this.icnMatkul.Location = new System.Drawing.Point(38, 389);
+            this.icnMatkul.Location = new System.Drawing.Point(52, 389);
             this.icnMatkul.Name = "icnMatkul";
             this.icnMatkul.Size = new System.Drawing.Size(25, 25);
             this.icnMatkul.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -234,7 +197,7 @@
             // icnDosen
             // 
             this.icnDosen.Image = global::SIPENA.Properties.Resources.dosen;
-            this.icnDosen.Location = new System.Drawing.Point(38, 354);
+            this.icnDosen.Location = new System.Drawing.Point(52, 354);
             this.icnDosen.Name = "icnDosen";
             this.icnDosen.Size = new System.Drawing.Size(25, 25);
             this.icnDosen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -245,7 +208,7 @@
             // icnMhs
             // 
             this.icnMhs.Image = global::SIPENA.Properties.Resources.Mhs;
-            this.icnMhs.Location = new System.Drawing.Point(38, 320);
+            this.icnMhs.Location = new System.Drawing.Point(52, 320);
             this.icnMhs.Name = "icnMhs";
             this.icnMhs.Size = new System.Drawing.Size(25, 25);
             this.icnMhs.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -256,7 +219,7 @@
             // icondashboard
             // 
             this.icondashboard.Image = global::SIPENA.Properties.Resources.Dashboard;
-            this.icondashboard.Location = new System.Drawing.Point(31, 215);
+            this.icondashboard.Location = new System.Drawing.Point(45, 215);
             this.icondashboard.Name = "icondashboard";
             this.icondashboard.Size = new System.Drawing.Size(25, 25);
             this.icondashboard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -269,7 +232,7 @@
             this.labelNilai.AutoSize = true;
             this.labelNilai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNilai.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelNilai.Location = new System.Drawing.Point(75, 511);
+            this.labelNilai.Location = new System.Drawing.Point(89, 511);
             this.labelNilai.Name = "labelNilai";
             this.labelNilai.Size = new System.Drawing.Size(42, 20);
             this.labelNilai.TabIndex = 18;
@@ -282,7 +245,7 @@
             this.labelPresensi.AutoSize = true;
             this.labelPresensi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPresensi.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelPresensi.Location = new System.Drawing.Point(75, 472);
+            this.labelPresensi.Location = new System.Drawing.Point(89, 472);
             this.labelPresensi.Name = "labelPresensi";
             this.labelPresensi.Size = new System.Drawing.Size(75, 20);
             this.labelPresensi.TabIndex = 17;
@@ -295,7 +258,7 @@
             this.labelLogout.AutoSize = true;
             this.labelLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelLogout.Location = new System.Drawing.Point(86, 599);
+            this.labelLogout.Location = new System.Drawing.Point(95, 600);
             this.labelLogout.Name = "labelLogout";
             this.labelLogout.Size = new System.Drawing.Size(66, 20);
             this.labelLogout.TabIndex = 16;
@@ -308,7 +271,7 @@
             this.labelMatkul.AutoSize = true;
             this.labelMatkul.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMatkul.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelMatkul.Location = new System.Drawing.Point(75, 392);
+            this.labelMatkul.Location = new System.Drawing.Point(89, 392);
             this.labelMatkul.Name = "labelMatkul";
             this.labelMatkul.Size = new System.Drawing.Size(99, 20);
             this.labelMatkul.TabIndex = 15;
@@ -321,7 +284,7 @@
             this.labelDosen.AutoSize = true;
             this.labelDosen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDosen.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelDosen.Location = new System.Drawing.Point(75, 357);
+            this.labelDosen.Location = new System.Drawing.Point(89, 357);
             this.labelDosen.Name = "labelDosen";
             this.labelDosen.Size = new System.Drawing.Size(99, 20);
             this.labelDosen.TabIndex = 14;
@@ -334,7 +297,7 @@
             this.labelMhs.AutoSize = true;
             this.labelMhs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMhs.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelMhs.Location = new System.Drawing.Point(75, 323);
+            this.labelMhs.Location = new System.Drawing.Point(89, 323);
             this.labelMhs.Name = "labelMhs";
             this.labelMhs.Size = new System.Drawing.Size(82, 20);
             this.labelMhs.TabIndex = 13;
@@ -347,7 +310,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label11.Location = new System.Drawing.Point(34, 284);
+            this.label11.Location = new System.Drawing.Point(48, 284);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(113, 20);
             this.label11.TabIndex = 12;
@@ -383,7 +346,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(43, 434);
+            this.label8.Location = new System.Drawing.Point(57, 434);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 20);
             this.label8.TabIndex = 9;
@@ -395,7 +358,7 @@
             this.labelDashboard.AutoSize = true;
             this.labelDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDashboard.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelDashboard.Location = new System.Drawing.Point(62, 215);
+            this.labelDashboard.Location = new System.Drawing.Point(76, 215);
             this.labelDashboard.Name = "labelDashboard";
             this.labelDashboard.Size = new System.Drawing.Size(117, 25);
             this.labelDashboard.TabIndex = 7;
@@ -444,20 +407,19 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlWadahForm.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlWadahForm.Location = new System.Drawing.Point(200, 210);
+            this.pnlWadahForm.Location = new System.Drawing.Point(232, 210);
             this.pnlWadahForm.Name = "pnlWadahForm";
-            this.pnlWadahForm.Size = new System.Drawing.Size(1062, 410);
+            this.pnlWadahForm.Size = new System.Drawing.Size(1030, 410);
             this.pnlWadahForm.TabIndex = 25;
             // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(200, 647);
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(232, 647);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1062, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1030, 26);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -657,11 +619,41 @@
             this.pictureBox6.TabIndex = 23;
             this.pictureBox6.TabStop = false;
             // 
-            // toolStripStatusLabel2
+            // flowLayoutPanel3
             // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(180, 20);
-            this.toolStripStatusLabel2.Text = "User Aktif: Akmal (Admin)";
+            this.flowLayoutPanel3.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel4);
+            this.flowLayoutPanel3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 190);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(230, 4);
+            this.flowLayoutPanel3.TabIndex = 23;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(801, 3);
+            this.flowLayoutPanel4.TabIndex = 22;
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel5.Controls.Add(this.flowLayoutPanel6);
+            this.flowLayoutPanel5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 569);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(230, 4);
+            this.flowLayoutPanel5.TabIndex = 24;
+            // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(801, 3);
+            this.flowLayoutPanel6.TabIndex = 22;
             // 
             // FrmMenuUtama
             // 
@@ -684,8 +676,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.icnLogout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icnNilai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icnpresensi)).EndInit();
@@ -706,6 +696,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -752,14 +744,13 @@
         private System.Windows.Forms.Label lblAngkaMatkul;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
     }
 }
