@@ -16,6 +16,45 @@ namespace SIPENA.view
         {
             InitializeComponent();
             TampilkanData();
+            AturHakAkses();
+        }
+
+        private void AturHakAkses()
+        {
+            // Mengubah role menjadi huruf kecil semua agar kebal dari salah ketik di database
+            string roleUser = (SesiLogin.Role ?? string.Empty).ToLower();
+
+            if (roleUser == "mahasiswa")
+            {
+                // MAHASISWA: Mode Read-Only (Hanya melihat nilai)
+                btnSimpan.Visible = false;
+                btnUbah.Visible = false;
+                btnHapus.Visible = false;
+                btnClear.Visible = false;
+
+                txtNim.Enabled = false;
+                txtKodeMk.Enabled = false;
+                txtTugas.Enabled = false;
+                txtUts.Enabled = false;
+                txtUas.Enabled = false;
+                txtSemester.Enabled = false;
+            }
+            else if (roleUser == "dosen")
+            {
+                // DOSEN: Bisa input dan ubah, TAPI tidak bisa hapus
+                btnSimpan.Visible = true;
+                btnUbah.Visible = true;
+                btnHapus.Visible = false;
+                btnClear.Visible = true; // Dinyalakan agar dosen bisa membersihkan kotak isian
+            }
+            else if (roleUser == "admin")
+            {
+                // ADMIN: Full Control (Bisa menggunakan semua tombol)
+                btnSimpan.Visible = true;
+                btnUbah.Visible = true;
+                btnHapus.Visible = true;
+                btnClear.Visible = true;
+            }
         }
 
         private void TampilkanData()
@@ -128,6 +167,8 @@ namespace SIPENA.view
                 MessageBox.Show(ex.Message);
             }
         }
+
+
 
         private void dgvNilai_CellClick(object sender, DataGridViewCellEventArgs e)
         {

@@ -31,6 +31,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.icnLogout = new System.Windows.Forms.PictureBox();
             this.icnNilai = new System.Windows.Forms.PictureBox();
             this.icnpresensi = new System.Windows.Forms.PictureBox();
@@ -72,12 +76,12 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.icnProdi = new System.Windows.Forms.PictureBox();
+            this.labelProdi = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icnLogout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icnNilai)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icnpresensi)).BeginInit();
@@ -94,13 +98,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icnProdi)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(45)))));
+            this.panel1.Controls.Add(this.icnProdi);
+            this.panel1.Controls.Add(this.labelProdi);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.flowLayoutPanel5);
             this.panel1.Controls.Add(this.flowLayoutPanel3);
@@ -150,10 +155,46 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(801, 3);
             this.flowLayoutPanel2.TabIndex = 22;
             // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel5.Controls.Add(this.flowLayoutPanel6);
+            this.flowLayoutPanel5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 616);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(230, 4);
+            this.flowLayoutPanel5.TabIndex = 24;
+            // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(801, 3);
+            this.flowLayoutPanel6.TabIndex = 22;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel4);
+            this.flowLayoutPanel3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 190);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(230, 4);
+            this.flowLayoutPanel3.TabIndex = 23;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(801, 3);
+            this.flowLayoutPanel4.TabIndex = 22;
+            // 
             // icnLogout
             // 
             this.icnLogout.Image = global::SIPENA.Properties.Resources.icon_logout;
-            this.icnLogout.Location = new System.Drawing.Point(61, 597);
+            this.icnLogout.Location = new System.Drawing.Point(61, 631);
             this.icnLogout.Name = "icnLogout";
             this.icnLogout.Size = new System.Drawing.Size(25, 25);
             this.icnLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -164,7 +205,7 @@
             // icnNilai
             // 
             this.icnNilai.Image = global::SIPENA.Properties.Resources.icon_medal;
-            this.icnNilai.Location = new System.Drawing.Point(52, 508);
+            this.icnNilai.Location = new System.Drawing.Point(52, 551);
             this.icnNilai.Name = "icnNilai";
             this.icnNilai.Size = new System.Drawing.Size(25, 25);
             this.icnNilai.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -175,7 +216,7 @@
             // icnpresensi
             // 
             this.icnpresensi.Image = global::SIPENA.Properties.Resources.icon_user;
-            this.icnpresensi.Location = new System.Drawing.Point(52, 470);
+            this.icnpresensi.Location = new System.Drawing.Point(52, 513);
             this.icnpresensi.Name = "icnpresensi";
             this.icnpresensi.Size = new System.Drawing.Size(25, 25);
             this.icnpresensi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -232,7 +273,7 @@
             this.labelNilai.AutoSize = true;
             this.labelNilai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNilai.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelNilai.Location = new System.Drawing.Point(89, 511);
+            this.labelNilai.Location = new System.Drawing.Point(89, 554);
             this.labelNilai.Name = "labelNilai";
             this.labelNilai.Size = new System.Drawing.Size(42, 20);
             this.labelNilai.TabIndex = 18;
@@ -245,7 +286,7 @@
             this.labelPresensi.AutoSize = true;
             this.labelPresensi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPresensi.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelPresensi.Location = new System.Drawing.Point(89, 472);
+            this.labelPresensi.Location = new System.Drawing.Point(89, 515);
             this.labelPresensi.Name = "labelPresensi";
             this.labelPresensi.Size = new System.Drawing.Size(75, 20);
             this.labelPresensi.TabIndex = 17;
@@ -258,7 +299,7 @@
             this.labelLogout.AutoSize = true;
             this.labelLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelLogout.Location = new System.Drawing.Point(95, 600);
+            this.labelLogout.Location = new System.Drawing.Point(95, 634);
             this.labelLogout.Name = "labelLogout";
             this.labelLogout.Size = new System.Drawing.Size(66, 20);
             this.labelLogout.TabIndex = 16;
@@ -346,7 +387,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(57, 434);
+            this.label8.Location = new System.Drawing.Point(57, 477);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 20);
             this.label8.TabIndex = 9;
@@ -619,41 +660,29 @@
             this.pictureBox6.TabIndex = 23;
             this.pictureBox6.TabStop = false;
             // 
-            // flowLayoutPanel3
+            // icnProdi
             // 
-            this.flowLayoutPanel3.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel3.Controls.Add(this.flowLayoutPanel4);
-            this.flowLayoutPanel3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(2, 190);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(230, 4);
-            this.flowLayoutPanel3.TabIndex = 23;
+            this.icnProdi.Image = global::SIPENA.Properties.Resources.Matkul;
+            this.icnProdi.Location = new System.Drawing.Point(52, 424);
+            this.icnProdi.Name = "icnProdi";
+            this.icnProdi.Size = new System.Drawing.Size(25, 25);
+            this.icnProdi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icnProdi.TabIndex = 27;
+            this.icnProdi.TabStop = false;
+            this.icnProdi.Click += new System.EventHandler(this.icnProdi_Click);
             // 
-            // flowLayoutPanel4
+            // labelProdi
             // 
-            this.flowLayoutPanel4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(801, 3);
-            this.flowLayoutPanel4.TabIndex = 22;
-            // 
-            // flowLayoutPanel5
-            // 
-            this.flowLayoutPanel5.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel5.Controls.Add(this.flowLayoutPanel6);
-            this.flowLayoutPanel5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 569);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(230, 4);
-            this.flowLayoutPanel5.TabIndex = 24;
-            // 
-            // flowLayoutPanel6
-            // 
-            this.flowLayoutPanel6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(801, 3);
-            this.flowLayoutPanel6.TabIndex = 22;
+            this.labelProdi.AutoSize = true;
+            this.labelProdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProdi.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelProdi.Location = new System.Drawing.Point(89, 427);
+            this.labelProdi.Name = "labelProdi";
+            this.labelProdi.Size = new System.Drawing.Size(89, 20);
+            this.labelProdi.TabIndex = 26;
+            this.labelProdi.Text = "Data Prodi";
+            this.labelProdi.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelProdi.Click += new System.EventHandler(this.labelProdi_Click);
             // 
             // FrmMenuUtama
             // 
@@ -676,6 +705,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.icnLogout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icnNilai)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.icnpresensi)).EndInit();
@@ -696,8 +727,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.icnProdi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -752,5 +782,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.PictureBox icnProdi;
+        private System.Windows.Forms.Label labelProdi;
     }
 }

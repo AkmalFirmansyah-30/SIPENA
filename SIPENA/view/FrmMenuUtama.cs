@@ -71,6 +71,8 @@ namespace SIPENA.view
             if (label8 != null) label8.Visible = false;
 
             // Menu / ikon
+            if (labelProdi != null) labelProdi.Visible = false;
+            if (icnProdi != null) icnProdi.Visible = false;
             if (labelMhs != null) labelMhs.Visible = false;
             if (icnMhs != null) icnMhs.Visible = false;
             if (labelDosen != null) labelDosen.Visible = false;
@@ -92,6 +94,8 @@ namespace SIPENA.view
 
                 if (labelMhs != null) labelMhs.Visible = true;
                 if (icnMhs != null) icnMhs.Visible = true;
+                if (labelProdi != null) labelProdi.Visible = true;
+                if (icnProdi != null) icnProdi.Visible = true;
                 if (labelDosen != null) labelDosen.Visible = true;
                 if (icnDosen != null) icnDosen.Visible = true;
                 if (labelMatkul != null) labelMatkul.Visible = true;
@@ -118,6 +122,9 @@ namespace SIPENA.view
 
                 if (labelPresensi != null) labelPresensi.Visible = true;
                 if (icnpresensi != null) icnpresensi.Visible = true;
+                // Mahasiswa juga dapat melihat Nilai
+                if (labelNilai != null) labelNilai.Visible = true;
+                if (icnNilai != null) icnNilai.Visible = true;
             }
         }
 
@@ -171,9 +178,7 @@ namespace SIPENA.view
             }
         }
 
-        /// <summary>
         /// Fungsi umum untuk membuka form apapun sebagai child form
-        /// </summary>
         private void BukaForm(Form childForm)
         {
             // Jika ada form lain yang sedang terbuka, tutup dulu
@@ -343,6 +348,16 @@ namespace SIPENA.view
         private void labelMatkul_Click(object sender, EventArgs e)
         {
             BukaForm(new Matkul_frm());
+        }
+
+        private void labelProdi_Click(object sender, EventArgs e)
+        {
+            BukaForm(new FrmProdi());
+        }
+
+        private void icnProdi_Click(object sender, EventArgs e)
+        {
+            BukaForm(new FrmProdi());
         }
     }
 }

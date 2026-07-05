@@ -133,69 +133,63 @@ namespace SIPENA.view
 
         private void AturHakAkses()
         {
-            // Set default states
-            btnSimpan.Visible = false;
-            btnUbah.Visible = false;
-            btnHapus.Visible = false;
+            // Gunakan ToLower agar kebal dari salah ketik huruf besar/kecil di DB
+            string roleUser = (SesiLogin.Role ?? string.Empty).ToLower();
 
-            txtNim.Enabled = true;
-            txtKodeMk.Enabled = true;
-            txtSemester.Enabled = true;
-            txtPertemuan.Enabled = true;
-            dtpTanggal.Enabled = true;
-            rbHadir.Enabled = true;
-            rbIzin.Enabled = true;
-            rbSakit.Enabled = true;
-            rbAlpha.Enabled = true;
-
-            string role = (SesiLogin.Role ?? string.Empty).ToLower();
-
-            if (role == "mahasiswa")
+            if (roleUser == "mahasiswa")
             {
-                // Mahasiswa dapat input presensi
+                // MAHASISWA: Hanya bisa melihat rekap (Read-Only)
+                btnSimpan.Visible = false;
+                btnUbah.Visible = false;
+                btnHapus.Visible = false;
+                
+                txtNim.Enabled = false;
+                txtKodeMk.Enabled = false;
+                txtSemester.Enabled = false;
+                txtPertemuan.Enabled = false;
+
+                dtpTanggal.Enabled = false;
+
+                rbHadir.Enabled = false;
+                rbIzin.Enabled = false;
+                rbSakit.Enabled = false;
+                rbAlpha.Enabled = false;
+            }
+            else if (roleUser == "dosen")
+            {
+                // DOSEN: Bertugas input presensi, tapi tidak bisa hapus riwayat
                 btnSimpan.Visible = true;
-                btnUbah.Visible = false;
-                btnHapus.Visible = false;
+                btnUbah.Visible = true;
+                btnHapus.Visible = false; // Sengaja dikunci
 
-                // semester diisi otomatis oleh sistem
-                txtSemester.Enabled = false;
+                // Pastikan semua inputan terbuka untuk Dosen
+                txtNim.Enabled = true;
+                txtKodeMk.Enabled = true;
+                txtSemester.Enabled = true; // Atau false jika ingin otomatis dari txtNim_Leave
+                txtPertemuan.Enabled = true;
+                dtpTanggal.Enabled = true;
+                rbHadir.Enabled = true;
+                rbIzin.Enabled = true;
+                rbSakit.Enabled = true;
+                rbAlpha.Enabled = true;
             }
-            else if (role == "dosen")
+            else if (roleUser == "admin")
             {
-                // Dosen hanya melihat rekap
-                btnSimpan.Visible = false;
-                btnUbah.Visible = false;
-                btnHapus.Visible = false;
+                // ADMIN (Staf TU): Full control, bisa hapus jika ada kesalahan
+                btnSimpan.Visible = true;
+                btnUbah.Visible = true;
+                btnHapus.Visible = true; 
 
-                txtNim.Enabled = false;
-                txtKodeMk.Enabled = false;
-                txtSemester.Enabled = false;
-                txtPertemuan.Enabled = false;
-                dtpTanggal.Enabled = false;
-
-                rbHadir.Enabled = false;
-                rbIzin.Enabled = false;
-                rbSakit.Enabled = false;
-                rbAlpha.Enabled = false;
-            }
-            else if (role == "admin")
-            {
-                // Admin dapat melihat dan menghapus
-                btnSimpan.Visible = false;
-                btnUbah.Visible = false;
-                btnHapus.Visible = true;
-
-                // Non-aktifkan input agar admin tidak mengubah data lewat form ini
-                txtNim.Enabled = false;
-                txtKodeMk.Enabled = false;
-                txtSemester.Enabled = false;
-                txtPertemuan.Enabled = false;
-                dtpTanggal.Enabled = false;
-
-                rbHadir.Enabled = false;
-                rbIzin.Enabled = false;
-                rbSakit.Enabled = false;
-                rbAlpha.Enabled = false;
+                // Pastikan semua inputan terbuka untuk Admin
+                txtNim.Enabled = true;
+                txtKodeMk.Enabled = true;
+                txtSemester.Enabled = true;
+                txtPertemuan.Enabled = true;
+                dtpTanggal.Enabled = true;
+                rbHadir.Enabled = true;
+                rbIzin.Enabled = true;
+                rbSakit.Enabled = true;
+                rbAlpha.Enabled = true;
             }
         }
 
