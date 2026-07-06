@@ -100,8 +100,6 @@ namespace SIPENA.view
                 if (icnDosen != null) icnDosen.Visible = true;
                 if (labelMatkul != null) labelMatkul.Visible = true;
                 if (icnMatkul != null) icnMatkul.Visible = true;
-                if (labelPresensi != null) labelPresensi.Visible = true;
-                if (icnpresensi != null) icnpresensi.Visible = true;
                 if (labelNilai != null) labelNilai.Visible = true;
                 if (icnNilai != null) icnNilai.Visible = true;
             }

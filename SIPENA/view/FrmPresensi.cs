@@ -13,6 +13,15 @@ namespace SIPENA.view
         public FrmPresensi()
         {
             InitializeComponent();
+            // Cegah admin membuka form Presensi (fitur tidak tersedia untuk admin)
+            string roleUser = (SesiLogin.Role ?? string.Empty).ToLower();
+            if (roleUser == "admin")
+            {
+                MessageBox.Show("Akses Ditolak: Admin tidak memiliki akses ke modul Presensi.", "Akses Ditolak", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Tutup form segera
+                this.Close();
+                return;
+            }
 
             dgvPresensi.AutoGenerateColumns = false;
 
