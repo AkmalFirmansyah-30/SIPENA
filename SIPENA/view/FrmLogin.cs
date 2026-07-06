@@ -78,15 +78,5 @@ namespace SIPENA.view
                 txtPassword.Focus(); // Kembalikan kursor ke kolom password
             }
         }
-
-        private void lblDaftar_Click(object sender, EventArgs e)
-        {
-            // Memanggil dan menampilkan form Register
-            FrmRegister register = new FrmRegister();
-            register.Show();
-
-            // Menyembunyikan form Login agar layarnya berganti
-            this.Hide();
-        }
     }
 }

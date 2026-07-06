@@ -34,7 +34,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblDaftar = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -110,7 +109,6 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Controls.Add(this.lblDaftar);
             this.panel3.Controls.Add(this.btnLogin);
             this.panel3.Controls.Add(this.txtPassword);
             this.panel3.Controls.Add(this.txtUsername);
@@ -123,19 +121,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(325, 403);
             this.panel3.TabIndex = 2;
-            // 
-            // lblDaftar
-            // 
-            this.lblDaftar.AutoSize = true;
-            this.lblDaftar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDaftar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDaftar.Location = new System.Drawing.Point(97, 289);
-            this.lblDaftar.Name = "lblDaftar";
-            this.lblDaftar.Size = new System.Drawing.Size(187, 15);
-            this.lblDaftar.TabIndex = 24;
-            this.lblDaftar.Text = "Belum punya akun? Daftar di sini";
-            this.lblDaftar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblDaftar.Click += new System.EventHandler(this.lblDaftar_Click);
             // 
             // btnLogin
             // 
@@ -254,6 +239,5 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Label lblDaftar;
     }
 }

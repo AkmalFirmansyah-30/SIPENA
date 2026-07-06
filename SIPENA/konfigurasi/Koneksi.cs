@@ -14,9 +14,7 @@ namespace SIPENA.konfigurasi
         MySqlCommand cmd;
         MySqlDataAdapter adapter;
         string link = "server=localhost;port=3306;database=sipena;uid=root;pwd=";
-        //string link = "server=localhost;port=3306;database=sipena;uid=root;pwd=";
 
-        // Konstruktor
         public Koneksi()
         {
             conn = new MySqlConnection(link);
@@ -33,21 +31,18 @@ namespace SIPENA.konfigurasi
                     conn.Open();
                 }
             }
-            catch (Exception)
-            {
-                // Catatan: Praktik yang baik adalah menampilkan atau mencatat (log) error di sini
-            }
+            catch (Exception) { }
         }
 
         private void tutupKoneksi()
         {
-            // Mengecek apakah koneksi sedang terbuka sebelum mencoba menutupnya
             if (conn != null && conn.State == ConnectionState.Open)
             {
                 conn.Close();
             }
         }
 
+        // 1. EKSEKUSI QUERY STRING BIASA (TIDAK AMAN UNTUK LOGIN)
         public override int eksekusiBukanQuery(string query)
         {
             int nilai = -1;
@@ -58,19 +53,13 @@ namespace SIPENA.konfigurasi
                 cmd.CommandText = query;
                 nilai = cmd.ExecuteNonQuery();
             }
-            catch (Exception)
-            {
-            }
-            finally
-            {
-                tutupKoneksi();
-            }
+            catch (Exception) { }
+            finally { tutupKoneksi(); }
             return nilai;
         }
 
         public override DataTable eksekusiQuery(string query)
         {
-            // Diimplementasikan berdasarkan foto dari layar proyektor
             DataTable nilai = new DataTable();
             try
             {
@@ -80,14 +69,38 @@ namespace SIPENA.konfigurasi
                 adapter.SelectCommand = cmd;
                 adapter.Fill(nilai);
             }
-            catch (Exception)
-            {
-            }
-            finally
-            {
-                tutupKoneksi();
-            }
+            catch (Exception) { }
+            finally { tutupKoneksi(); }
+            return nilai;
+        }
 
+        // 2. EKSEKUSI QUERY PARAMETER (SANGAT AMAN) - HASIL OVERLOADING
+        public override int eksekusiBukanQuery(MySqlCommand command)
+        {
+            int nilai = -1;
+            try
+            {
+                bukaKoneksi();
+                command.Connection = conn; // Kaitkan command dengan koneksi
+                nilai = command.ExecuteNonQuery();
+            }
+            catch (Exception) { }
+            finally { tutupKoneksi(); }
+            return nilai;
+        }
+
+        public override DataTable eksekusiQuery(MySqlCommand command)
+        {
+            DataTable nilai = new DataTable();
+            try
+            {
+                bukaKoneksi();
+                command.Connection = conn; // Kaitkan command dengan koneksi
+                adapter.SelectCommand = command;
+                adapter.Fill(nilai);
+            }
+            catch (Exception) { }
+            finally { tutupKoneksi(); }
             return nilai;
         }
     }

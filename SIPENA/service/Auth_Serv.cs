@@ -13,32 +13,18 @@ namespace SIPENA.service
         // Panggil jembatan koneksi
         Koneksi server = new Koneksi();
 
-        // FITUR REGISTER: Cek ketersediaan Username
-        public bool CekUsername(string username)
-        {
-            string cekQuery = "SELECT * FROM users WHERE username='" + username + "'";
-            DataTable dt = server.eksekusiQuery(cekQuery);
-
-            return dt.Rows.Count > 0; // Mengembalikan nilai true jika username sudah dipakai
-        }
-
-        // FITUR REGISTER: Simpan data ke database
-        public bool Register(string username, string password, string namaLengkap, string role)
-        {
-            string insertQuery = "INSERT INTO users (username, password, nama_lengkap, role) VALUES ('" + username + "', '" + password + "', '" + namaLengkap + "', '" + role + "')";
-            int hasil = server.eksekusiBukanQuery(insertQuery);
-
-            return hasil > 0; // Mengembalikan nilai true jika berhasil disimpan
-        }
-
-        // FITUR LOGIN: Cek kecocokan data
+        // FITUR LOGIN: Cek kecocokan data ke tabel users terpusat
         public DataTable Login(string username, string password)
         {
-            // Query untuk mencari user yang username dan password-nya cocok
-            string loginQuery = "SELECT * FROM users WHERE username='" + username + "' AND password='" + password + "'";
+            // Gunakan parameterized query untuk mencegah SQL Injection
+            MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(
+                "SELECT username, nama_lengkap, role FROM users WHERE username=@user AND password=@pass");
 
-            // Kembalikan dalam bentuk DataTable agar form Login bisa membaca Nama dan Role-nya
-            return server.eksekusiQuery(loginQuery);
+            cmd.Parameters.AddWithValue("@user", username);
+            cmd.Parameters.AddWithValue("@pass", password);
+
+            // Eksekusi parameterized query via Koneksi
+            return server.eksekusiQuery(cmd);
         }
     }
 }

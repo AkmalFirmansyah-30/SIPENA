@@ -1,18 +1,21 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
 
 namespace SIPENA.konfigurasi
 {
     abstract class Konfigurasi
     {
-        // untuk menangani instruksi INSERT, UPDATE dan DELETE
+        // Untuk query biasa (tanpa parameter)
         public abstract int eksekusiBukanQuery(string query);
-
-        // untuk menangani instruksi SELECT
         public abstract DataTable eksekusiQuery(string query);
+
+        // [BARU] Untuk query aman (menggunakan parameter MySqlCommand)
+        public abstract int eksekusiBukanQuery(MySqlCommand command);
+        public abstract DataTable eksekusiQuery(MySqlCommand command);
     }
 }
