@@ -12,16 +12,20 @@ using System.Windows.Forms;
 
 namespace SIPENA.view
 {
+    // Class Matkul_frm adalah form untuk mengelola data mata kuliah
     public partial class Matkul_frm : Form
     {
+        // Instansiasi class Matkul_serv sebagai otak pemroses data mata kuliah
         Matkul_serv serv = new Matkul_serv();
         Dosen_serv dsnServ = new Dosen_serv();
 
+        // Konstruktor Matkul_frm untuk inisialisasi form mata kuliah
         public Matkul_frm()
         {
             InitializeComponent();
         }
 
+        // Event handler untuk event Load pada form Matkul_frm
         private void Matkul_frm_Load(object sender, EventArgs e)
         {
             // Membuat form langsung otomatis penuh (Maximized) saat dirunning
@@ -62,6 +66,7 @@ namespace SIPENA.view
             ClearForm();
         }
 
+        // Fungsi untuk memuat data dosen ke dalam ComboBox nidn_cmb
         private void LoadDosen()
         {
             try
@@ -86,6 +91,7 @@ namespace SIPENA.view
             }
         }
 
+        // Fungsi untuk menyegarkan tampilan DataGridView dengan data terbaru dari database
         private void RefreshGrid()
         {
             try
@@ -118,6 +124,7 @@ namespace SIPENA.view
             }
         }
 
+        // Event handler untuk event CellClick pada DataGridView, digunakan untuk mengisi form dengan data yang dipilih
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -127,14 +134,15 @@ namespace SIPENA.view
                     DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
                     // TWEAK AMAN: Menggunakan Name Kolom (DataPropertyName) agar tidak rawan bergeser indeksnya
-                    kode_txt.Text = row.Cells["kode_mk"].Value.ToString();
-                    nama_txt.Text = row.Cells["nama_mk"].Value.ToString();
-                    sks_num.Value = Convert.ToDecimal(row.Cells["sks"].Value);
-                    nidn_cmb.SelectedValue = row.Cells["nidn"].Value.ToString();
-                    semester_cmb.Text = row.Cells["semester"].Value.ToString();
+                    kode_txt.Text = row.Cells["colKode"].Value.ToString();
+                    nama_txt.Text = row.Cells["colNama"].Value.ToString();
+                    if (row.Cells["colSks"].Value != null)
+                        sks_num.Value = Convert.ToDecimal(row.Cells["colSks"].Value); 
+                    nidn_cmb.SelectedValue = row.Cells["colnidn"].Value.ToString();
+                    semester_cmb.Text = row.Cells["colSemester"].Value.ToString();
 
                     // TWEAK SINKRONISASI: Menampilkan kembali nilai prodi saat grid di-klik
-                    prodi_cmb.Text = row.Cells["program_studi"].Value.ToString();
+                    prodi_cmb.Text = row.Cells["colProdi"].Value.ToString();
 
                     // Kunci kode_txt agar primary key tidak diubah saat mode edit (Ubah/Hapus)
                     kode_txt.Enabled = false;
@@ -146,6 +154,7 @@ namespace SIPENA.view
             }
         }
 
+        // Event handler untuk tombol simpan, digunakan untuk menyimpan data mata kuliah baru ke database
         private void simpan_btn_Click(object sender, EventArgs e)
         {
             try
@@ -208,10 +217,12 @@ namespace SIPENA.view
             }
         }
 
+        // Event handler untuk tombol ubah, digunakan untuk memperbarui data mata kuliah yang sudah ada di database
         private void ubah_btn_Click(object sender, EventArgs e)
         {
             try
             {
+                // VALIDASI INPUT KOSONG SAAT UBAH
                 if (string.IsNullOrWhiteSpace(kode_txt.Text))
                 {
                     MessageBox.Show(
@@ -237,6 +248,7 @@ namespace SIPENA.view
                     return;
                 }
 
+                // MEMBUAT OBJECT
                 Matkul mk = new Matkul();
                 mk.KodeMk = kode_txt.Text;
                 mk.NamaMk = nama_txt.Text;
@@ -277,10 +289,12 @@ namespace SIPENA.view
             }
         }
 
+        // Event handler untuk tombol hapus, digunakan untuk menghapus data mata kuliah yang sudah ada di database
         private void hapus_btn_Click(object sender, EventArgs e)
         {
             try
             {
+                // VALIDASI INPUT KOSONG SAAT HAPUS
                 if (string.IsNullOrWhiteSpace(kode_txt.Text))
                 {
                     MessageBox.Show(
@@ -292,12 +306,14 @@ namespace SIPENA.view
                     return;
                 }
 
+                // VALIDASI KONFIRMASI HAPUS
                 DialogResult jawab = MessageBox.Show(
                         "Yakin ingin menghapus data mata kuliah ini?",
                         "Konfirmasi",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question);
 
+                // Jika pengguna mengklik "Yes", maka data mata kuliah akan dihapus dari database
                 if (jawab == DialogResult.Yes)
                 {
                     if (serv.Hapus(kode_txt.Text))
@@ -315,6 +331,7 @@ namespace SIPENA.view
             }
             catch (Exception ex)
             {
+                // TWEAK AMAN: Menampilkan pesan error jika terjadi kesalahan saat menghapus data
                 MessageBox.Show(
                     "Terjadi kesalahan saat menghapus : " + ex.Message,
                     "Error",
@@ -323,11 +340,13 @@ namespace SIPENA.view
             }
         }
 
+        // Event handler untuk tombol clear, digunakan untuk membersihkan semua inputan di form mata kuliah
         private void clear_btn_Click(object sender, EventArgs e)
         {
             ClearForm();
         }
 
+        // Metode ClearForm digunakan untuk membersihkan semua inputan di form mata kuliah
         private void ClearForm()
         {
             kode_txt.Clear();
@@ -344,6 +363,7 @@ namespace SIPENA.view
             kode_txt.Focus();
         }
 
+        // Event handler untuk tombol tutup, digunakan untuk menutup form mata kuliah
         private void tutup_btn_Click_1(object sender, EventArgs e)
         {
             this.Close();

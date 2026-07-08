@@ -12,14 +12,19 @@ using SIPENA.service;
 
 namespace SIPENA.view
 {
+    // Form untuk mengelola data Dosen, termasuk menampilkan, menambah, mengubah, dan menghapus data
     public partial class Dosen_frm : Form
     {
+        // Instansiasi class service untuk menghubungkan form ini dengan operasi database terkait Dosen
         Dosen_serv serv = new Dosen_serv();
+
+        // Constructor untuk form Dosen_frm
         public Dosen_frm()
         {
             InitializeComponent();
         }
 
+        // Fungsi Load Form Dosen_frm
         private void Dosen_frm_Load(object sender, EventArgs e)
         {
             prodi_cmb.Items.Clear(); // Bersihkan data bawaan jika ada
@@ -39,9 +44,7 @@ namespace SIPENA.view
             RefreshGrid();
         }
 
-        // =========================================
-        // FUNGSI MENAMPILKAN DATA KE DATAGRIDVIEW
-        // =========================================
+        // Fungsi untuk menyegarkan data grid dengan data terbaru dari database
         private void RefreshGrid()
         {
             try
@@ -65,6 +68,7 @@ namespace SIPENA.view
             }
             catch (Exception ex)
             {
+                // Tampilkan pesan error jika terjadi kesalahan saat menampilkan data
                 MessageBox.Show("Gagal menampilkan data : " + ex.Message,
                     "Error",
                     MessageBoxButtons.OK,
@@ -72,9 +76,7 @@ namespace SIPENA.view
             }
         }
 
-        // =========================================
-        // FUNGSI MEMBERSIHKAN FORM
-        // =========================================
+        // Fungsi untuk membersihkan form input dan mengembalikan ke kondisi awal
         private void ClearForm()
         {
             nidn_txt.Clear();
@@ -94,9 +96,7 @@ namespace SIPENA.view
             nidn_txt.Focus();
         }
 
-        // =========================================
-        // SAAT DATA GRID DIKLIK (EDIT/AMBIL DATA)
-        // =========================================
+        // Event handler untuk menangani klik pada sel di DataGridView
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -131,10 +131,12 @@ namespace SIPENA.view
             }
         }
 
+        // Event handler untuk tombol Simpan
         private void simpan_btn_Click(object sender, EventArgs e)
         {
             try
             {
+                // VALIDASI: Pastikan NIDN dan Nama Dosen tidak kosong sebelum menyimpan
                 if (string.IsNullOrEmpty(nidn_txt.Text) || string.IsNullOrEmpty(namdos_txt.Text))
                 {
                     MessageBox.Show("NIDN dan Nama Dosen wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -148,6 +150,7 @@ namespace SIPENA.view
                     return;
                 }
 
+                // VALIDASI TAMBAHAN: Program Studi wajib dipilih
                 Dosen dsn = new Dosen();
                 dsn.Nidn = nidn_txt.Text;
                 dsn.NamaDosen = namdos_txt.Text;
@@ -160,6 +163,7 @@ namespace SIPENA.view
 
                 if (serv.Simpan(dsn))
                 {
+                    // Tampilkan pesan sukses jika data berhasil disimpan
                     MessageBox.Show("Data Dosen berhasil ditambahkan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RefreshGrid();
                     ClearForm();
@@ -167,20 +171,24 @@ namespace SIPENA.view
             }
             catch (Exception ex)
             {
+                // Tampilkan pesan error jika terjadi kesalahan saat menyimpan data
                 MessageBox.Show("Terjadi kesalahan saat menyimpan: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // Event handler untuk tombol Ubah
         private void ubah_btn_Click(object sender, EventArgs e)
         {
             try
             {
+                // VALIDASI: Pastikan NIDN tidak kosong sebelum mengubah
                 if (string.IsNullOrEmpty(nidn_txt.Text))
                 {
                     MessageBox.Show("Pilih data dosen yang ingin diubah terlebih dahulu dari tabel!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // VALIDASI TAMBAHAN: Jenis Kelamin wajib dipilih
                 Dosen dsn = new Dosen();
                 dsn.Nidn = nidn_txt.Text;
                 dsn.NamaDosen = namdos_txt.Text;
@@ -193,6 +201,7 @@ namespace SIPENA.view
 
                 if (serv.Ubah(dsn))
                 {
+                    // Tampilkan pesan sukses jika data berhasil diubah
                     MessageBox.Show("Data Dosen berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RefreshGrid();
                     ClearForm();
@@ -200,14 +209,17 @@ namespace SIPENA.view
             }
             catch (Exception ex)
             {
+                // Tampilkan pesan error jika terjadi kesalahan saat mengubah data
                 MessageBox.Show("Terjadi kesalahan saat mengubah: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // Event handler untuk tombol Hapus
         private void hapus_btn_Click(object sender, EventArgs e)
         {
             try
             {
+                // VALIDASI: Pastikan NIDN tidak kosong sebelum menghapus
                 if (string.IsNullOrEmpty(nidn_txt.Text))
                 {
                     MessageBox.Show("Pilih data dosen yang ingin dihapus terlebih dahulu dari tabel!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -216,6 +228,7 @@ namespace SIPENA.view
 
                 if (MessageBox.Show("Apakah Anda yakin ingin menghapus dosen dengan NIDN " + nidn_txt.Text + "?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    // Panggil fungsi Hapus dari service untuk menghapus data dosen berdasarkan NIDN
                     if (serv.Hapus(nidn_txt.Text))
                     {
                         MessageBox.Show("Data Dosen berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -226,20 +239,24 @@ namespace SIPENA.view
             }
             catch (Exception ex)
             {
+                // Tampilkan pesan error jika terjadi kesalahan saat menghapus data
                 MessageBox.Show("Terjadi kesalahan saat menghapus: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // Event handler untuk tombol Clear
         private void clear_btn_Click(object sender, EventArgs e)
         {
             ClearForm();
         }
 
+        // Event handler untuk tombol Tutup
         private void tutup_btn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Event handler untuk perubahan teks pada textbox Nama Dosen
         private void namdos_txt_TextChanged(object sender, EventArgs e)
         {
 

@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace SIPENA.model
 {
+    // KONSEP OOP: Class & Access Modifier (internal)
+    // Class Nilai berfungsi sebagai entitas data (blueprint) untuk menampung rekaman nilai mahasiswa.
+    // Modifier 'internal' memastikan class ini terproteksi dan hanya dikenali 
+    // di dalam lingkup project (assembly) aplikasi SIPENA ini saja.
     internal class Nilai
     {
+        // KONSEP OOP: Encapsulation (Auto-Implemented Properties)
+        // Penggunaan { get; set; } merupakan cara C# menerapkan Encapsulation.
+        // Data asli disembunyikan (private di latar belakang), dan kita menggunakan 
+        // 'get' (Accessor) untuk membaca serta 'set' (Mutator) untuk mengisi datanya.
         public int IdNilai { get; set; }
         public string Nim { get; set; }
         public string KodeMk { get; set; }

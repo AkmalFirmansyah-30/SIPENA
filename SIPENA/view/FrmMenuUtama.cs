@@ -13,11 +13,13 @@ using System.Windows.Forms;
 
 namespace SIPENA.view
 {
+    // Class FrmMenuUtama adalah form utama setelah login berhasil
     public partial class FrmMenuUtama : Form
     {
-        // 1. REVISI: Gunakan variabel tipe 'Form' umum, bukan khusus FrmPresensi
+        // Gunakan variabel tipe 'Form' umum, bukan khusus FrmPresensi
         private Form activeForm = null;
 
+        // Konstruktor FrmMenuUtama untuk inisialisasi form utama
         public FrmMenuUtama()
         {
             InitializeComponent();
@@ -25,7 +27,7 @@ namespace SIPENA.view
 
         private void FrmMenuUtama_Load(object sender, EventArgs e)
         {
-            // --- 1. SET DATA USER AKTIF ---
+            // SET DATA USER AKTIF
             // (Sesuaikan nama toolStripStatusLabel1 dengan yang ada di Properties Anda)
             // Gunakan nama panggilan (kata pertama dari nama lengkap) untuk tampilan sidebar
             string namaLengkap = SesiLogin.NamaLengkap ?? "User"; // Jaga-jaga jika data kosong
@@ -39,7 +41,7 @@ namespace SIPENA.view
             // (Opsional) Biarkan status bar tetap menampilkan nama lengkap
             toolStripStatusLabel1.Text = "User Aktif: " + namaLengkap + " (" + SesiLogin.Role + ")";
 
-            // --- 2. LOAD GAMBAR DARI RESOURCES (Kode Anda) ---
+            // SET ICON DAN GAMBAR
             try
             {
                 pictureBox1.Image = SIPENA.Properties.Resources.Logo_PNC;
@@ -59,13 +61,14 @@ namespace SIPENA.view
             // Atur visibilitas menu berdasarkan role user
             AturHakAksesMenu();
 
-            // --- 3. PANGGIL FUNGSI HITUNG DATA DASHBOARD ---
+            // PANGGIL FUNGSI HITUNG DATA DASHBOARD ---
             TampilDataDashboard();
         }
 
+        // Fungsi untuk mengatur hak akses menu berdasarkan role user
         private void AturHakAksesMenu()
         {
-            // 1. SEMBUNYIKAN SEMUA MENU TERLEBIH DAHULU (Default Closed)
+            // SEMBUNYIKAN SEMUA MENU TERLEBIH DAHULU (Default Closed)
             // Kategori (Designer names: label11 = Master Data, label8 = Transaksi)
             if (label11 != null) label11.Visible = false;
             if (label8 != null) label8.Visible = false;
@@ -83,7 +86,7 @@ namespace SIPENA.view
             if (icnpresensi != null) icnpresensi.Visible = false;
             if (labelNilai != null) labelNilai.Visible = false;
             if (icnNilai != null) icnNilai.Visible = false;
-            // 2. TAMPILKAN MENU BERDASARKAN ROLE
+            // TAMPILKAN MENU BERDASARKAN ROLE
             string roleUser = (SesiLogin.Role ?? string.Empty).ToLower();
 
             if (roleUser == "admin")
@@ -126,6 +129,7 @@ namespace SIPENA.view
             }
         }
 
+        // Fungsi untuk menampilkan data dashboard (total mahasiswa, dosen, mata kuliah)
         private void TampilDataDashboard()
         {
             // Set default values first
@@ -238,11 +242,13 @@ namespace SIPENA.view
 
         }
 
+        // Fungsi untuk menutup form aktif dan kembali ke dashboard kosong
         private void labelPresensi_Click(object sender, EventArgs e)
         {
             BukaForm(new FrmPresensi());
         }
 
+        // Fungsi untuk menutup form aktif dan kembali ke dashboard kosong
         private void labelDashboard_Click(object sender, EventArgs e)
         {
             // Tutup form aktif agar kembali ke dashboard kosong
@@ -254,14 +260,13 @@ namespace SIPENA.view
             TampilDataDashboard();
         }
 
-        /// <summary>
         /// Event handler untuk icon presensi - klik untuk membuka form presensi
-        /// </summary>
         private void icnpresensi_Click(object sender, EventArgs e)
         {
             BukaForm(new FrmPresensi());
         }
 
+        /// Event handler untuk icon dashboard - klik untuk menutup form aktif dan kembali ke dashboard
         private void icondashboard_Click(object sender, EventArgs e)
         {
             // Tutup form anak yang sedang aktif
@@ -273,34 +278,37 @@ namespace SIPENA.view
             TampilDataDashboard();
         }
 
+        // Fungsi untuk logout dari aplikasi
         private void labelLogout_Click(object sender, EventArgs e)
         {
             ProsesLogout();
         }
 
+        // Fungsi untuk memproses logout dari aplikasi
         private void ProsesLogout()
         {
-            // 1. Tampilkan jendela konfirmasi
+            // Tampilkan jendela konfirmasi
             DialogResult hasil = MessageBox.Show("Apakah Anda yakin ingin keluar dari aplikasi SIPENA?",
                                                  "Konfirmasi Logout",
                                                  MessageBoxButtons.YesNo,
                                                  MessageBoxIcon.Question);
 
-            // 2. Jika user menekan tombol Yes
+            // Jika user menekan tombol Yes
             if (hasil == DialogResult.Yes)
             {
-                // 3. BERSIHKAN SESI (Panggil method Logout yang Anda buat tadi)
+                // BERSIHKAN SESI (Panggil method Logout yang Anda buat tadi)
                 SesiLogin.Logout();
 
-                // 4. Arahkan kembali ke Form Login
+                // Arahkan kembali ke Form Login
                 FrmLogin login = new FrmLogin();
                 login.Show();
 
-                // 5. Tutup Form Menu Utama ini
+                // Tutup Form Menu Utama ini
                 this.Close();
             }
         }
 
+        // Event handler untuk icon logout - klik untuk memproses logout
         private void icnLogout_Click(object sender, EventArgs e)
         {
             ProsesLogout();
@@ -308,11 +316,13 @@ namespace SIPENA.view
 
         private void labelNilai_Click(object sender, EventArgs e)
         {
+            // Buka form nilai
             BukaForm(new FrmNilai());
         }
 
         private void icnNilai_Click(object sender, EventArgs e)
         {
+            // Buka form nilai
             BukaForm(new FrmNilai());
         }
 
@@ -330,31 +340,37 @@ namespace SIPENA.view
 
         private void icnDosen_Click(object sender, EventArgs e)
         {
+            // Buka form dosen
             BukaForm(new Dosen_frm());
         }
 
         private void labelDosen_Click(object sender, EventArgs e)
         {
+            // Buka form dosen
             BukaForm(new Dosen_frm());
         }
 
         private void icnMatkul_Click(object sender, EventArgs e)
         {
+            // Buka form mata kuliah
             BukaForm(new Matkul_frm());
         }
 
         private void labelMatkul_Click(object sender, EventArgs e)
         {
+            // Buka form mata kuliah
             BukaForm(new Matkul_frm());
         }
 
         private void labelProdi_Click(object sender, EventArgs e)
         {
+            // Buka form program studi
             BukaForm(new FrmProdi());
         }
 
         private void icnProdi_Click(object sender, EventArgs e)
         {
+            // Buka form program studi
             BukaForm(new FrmProdi());
         }
     }

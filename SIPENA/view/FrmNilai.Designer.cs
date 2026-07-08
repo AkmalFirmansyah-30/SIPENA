@@ -48,11 +48,6 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnTutup = new System.Windows.Forms.Button();
             this.dgvNilai = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtSemester = new System.Windows.Forms.TextBox();
             this.colIdNilai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNim = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNama = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +58,11 @@
             this.colNilaiTugas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAkhir = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtSemester = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNilai)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlHeader.SuspendLayout();
@@ -74,7 +74,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(503, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(313, 26);
+            this.label1.Size = new System.Drawing.Size(254, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Pengelolaan Nilai Mahasiswa";
             // 
@@ -85,7 +85,7 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(59, 101);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 21);
+            this.label2.Size = new System.Drawing.Size(61, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "🪪 NIM";
             // 
@@ -96,7 +96,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(450, 101);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 21);
+            this.label3.Size = new System.Drawing.Size(94, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "📚 Kode MK";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -108,7 +108,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(59, 319);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 21);
+            this.label4.Size = new System.Drawing.Size(106, 19);
             this.label4.TabIndex = 3;
             this.label4.Text = "📋 Nilai Tugas";
             // 
@@ -119,7 +119,7 @@
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(59, 211);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 21);
+            this.label5.Size = new System.Drawing.Size(94, 19);
             this.label5.TabIndex = 4;
             this.label5.Text = "📝 Nilai UTS";
             // 
@@ -130,7 +130,7 @@
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(450, 211);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 21);
+            this.label6.Size = new System.Drawing.Size(96, 19);
             this.label6.TabIndex = 5;
             this.label6.Text = "📝 Nilai UAS";
             // 
@@ -140,7 +140,7 @@
             this.txtNim.Location = new System.Drawing.Point(63, 145);
             this.txtNim.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNim.Name = "txtNim";
-            this.txtNim.Size = new System.Drawing.Size(322, 31);
+            this.txtNim.Size = new System.Drawing.Size(322, 27);
             this.txtNim.TabIndex = 6;
             // 
             // txtKodeMk
@@ -149,7 +149,7 @@
             this.txtKodeMk.Location = new System.Drawing.Point(450, 145);
             this.txtKodeMk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtKodeMk.Name = "txtKodeMk";
-            this.txtKodeMk.Size = new System.Drawing.Size(322, 31);
+            this.txtKodeMk.Size = new System.Drawing.Size(322, 27);
             this.txtKodeMk.TabIndex = 7;
             this.txtKodeMk.TextChanged += new System.EventHandler(this.txtKodeMk_TextChanged);
             // 
@@ -159,7 +159,7 @@
             this.txtTugas.Location = new System.Drawing.Point(63, 361);
             this.txtTugas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTugas.Name = "txtTugas";
-            this.txtTugas.Size = new System.Drawing.Size(322, 31);
+            this.txtTugas.Size = new System.Drawing.Size(322, 27);
             this.txtTugas.TabIndex = 8;
             // 
             // txtUts
@@ -168,7 +168,7 @@
             this.txtUts.Location = new System.Drawing.Point(63, 257);
             this.txtUts.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUts.Name = "txtUts";
-            this.txtUts.Size = new System.Drawing.Size(322, 31);
+            this.txtUts.Size = new System.Drawing.Size(322, 27);
             this.txtUts.TabIndex = 9;
             // 
             // txtUas
@@ -177,7 +177,7 @@
             this.txtUas.Location = new System.Drawing.Point(450, 257);
             this.txtUas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUas.Name = "txtUas";
-            this.txtUas.Size = new System.Drawing.Size(322, 31);
+            this.txtUas.Size = new System.Drawing.Size(322, 27);
             this.txtUas.TabIndex = 10;
             // 
             // label7
@@ -186,7 +186,7 @@
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(165, 208);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 25);
+            this.label7.Size = new System.Drawing.Size(40, 20);
             this.label7.TabIndex = 11;
             this.label7.Text = "30%";
             // 
@@ -196,7 +196,7 @@
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(180, 317);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 25);
+            this.label8.Size = new System.Drawing.Size(40, 20);
             this.label8.TabIndex = 12;
             this.label8.Text = "30%";
             // 
@@ -206,7 +206,7 @@
             this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(555, 207);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 25);
+            this.label9.Size = new System.Drawing.Size(40, 20);
             this.label9.TabIndex = 13;
             this.label9.Text = "40%";
             // 
@@ -289,9 +289,6 @@
             // 
             this.dgvNilai.AllowUserToAddRows = false;
             this.dgvNilai.AllowUserToDeleteRows = false;
-            this.dgvNilai.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvNilai.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvNilai.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
             this.dgvNilai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -315,58 +312,6 @@
             this.dgvNilai.Size = new System.Drawing.Size(836, 180);
             this.dgvNilai.TabIndex = 19;
             this.dgvNilai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNilai_CellClick);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(838, 0);
-            this.panel1.TabIndex = 20;
-            // 
-            // pnlHeader
-            // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-            this.pnlHeader.Controls.Add(this.label10);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(838, 71);
-            this.pnlHeader.TabIndex = 21;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(20, 19);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(218, 30);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "🎓 Form Input Nilai";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(450, 319);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 21);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "🎓 Semester";
-            // 
-            // txtSemester
-            // 
-            this.txtSemester.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSemester.Location = new System.Drawing.Point(450, 361);
-            this.txtSemester.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSemester.Name = "txtSemester";
-            this.txtSemester.Size = new System.Drawing.Size(322, 31);
-            this.txtSemester.TabIndex = 23;
             // 
             // colIdNilai
             // 
@@ -448,10 +393,63 @@
             this.colGrade.Name = "colGrade";
             this.colGrade.ReadOnly = true;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(837, 0);
+            this.panel1.TabIndex = 20;
+            // 
+            // pnlHeader
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+            this.pnlHeader.Controls.Add(this.label10);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(837, 71);
+            this.pnlHeader.TabIndex = 21;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(20, 19);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(185, 25);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "🎓 Form Input Nilai";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(450, 319);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(95, 19);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "🎓 Semester";
+            // 
+            // txtSemester
+            // 
+            this.txtSemester.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSemester.Location = new System.Drawing.Point(450, 361);
+            this.txtSemester.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSemester.Name = "txtSemester";
+            this.txtSemester.Size = new System.Drawing.Size(322, 27);
+            this.txtSemester.TabIndex = 23;
+            // 
             // FrmNilai
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(838, 744);
             this.Controls.Add(this.txtSemester);

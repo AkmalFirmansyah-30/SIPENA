@@ -13,11 +13,13 @@ using System.Windows.Forms;
 
 namespace SIPENA.view
 {
+    // Class FrmLogin adalah form untuk login ke sistem SIPENA
     public partial class FrmLogin : Form
     {
         // Memanggil class Auth_Serv sebagai otak pemroses data
         Auth_Serv auth = new Auth_Serv();
 
+        // Class FrmLogin adalah konstruktor untuk inisialisasi form login
         public FrmLogin()
         {
             InitializeComponent();
@@ -43,6 +45,7 @@ namespace SIPENA.view
 
         }
 
+        // Tombol Login ditekan, maka sistem akan memproses login
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // Validasi Mencegah Input Kosong (Tugas View)

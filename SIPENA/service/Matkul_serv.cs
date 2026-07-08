@@ -11,20 +11,23 @@ namespace SIPENA.service
 {
     internal class Matkul_serv
     {
+        // Memanggil jembatan koneksi ke database
         Koneksi kon = new Koneksi();
 
-        // 1. Fungsi Tampil Data
+        // Mengambil seluruh data mata kuliah dari database untuk ditampilkan ke dalam tabel
         public DataTable TampilData()
         {
             string query = "SELECT * FROM mata_kuliah";
             return kon.eksekusiQuery(query);
         }
+
+        // Berfungsi sebagai alias untuk memanggil ulang fungsi TampilData() saat tabel butuh disegarkan
         public DataTable RefreshData()
         {
             return TampilData();
         }
 
-        // 2. Fungsi Simpan (Insert)
+        // Menyimpan data mata kuliah baru ke dalam database menggunakan teknik penggabungan string (concatenation)
         public bool Simpan(Matkul mk)
         {
             string query = "INSERT INTO mata_kuliah (kode_mk, nama_mk, sks, nidn, semester, program_studi) " +
@@ -34,7 +37,7 @@ namespace SIPENA.service
             return hasil > 0;
         }
 
-        // 3. Fungsi Ubah (Update)
+        // Fungsi Ubah (Update)
         public bool Ubah(Matkul mk)
         {
             string nidnValue = string.IsNullOrEmpty(mk.Nidn) ? "NULL" : $"'{mk.Nidn}'";
@@ -46,7 +49,7 @@ namespace SIPENA.service
             return hasil > 0;
         }
 
-        // 4. Fungsi Hapus (Delete)
+        // Fungsi Hapus (Delete)
         public bool Hapus(string kodeMk)
         {
             string query = $"DELETE FROM mata_kuliah WHERE kode_mk = '{kodeMk}'";

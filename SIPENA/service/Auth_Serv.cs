@@ -10,20 +10,23 @@ namespace SIPENA.service
 {
     public class Auth_Serv
     {
-        // Panggil jembatan koneksi
+        // Membuat objek dari class Koneksi untuk menghubungkan file service ini ke database
         Koneksi server = new Koneksi();
 
-        // FITUR LOGIN: Cek kecocokan data ke tabel users terpusat
+        // Fungsi untuk mengecek kecocokan Username dan Password saat pengguna mencoba login.
+        // Mengembalikan tipe data DataTable agar hasilnya bisa dibaca oleh FrmLogin.
         public DataTable Login(string username, string password)
         {
-            // Gunakan parameterized query untuk mencegah SQL Injection
+            // Menyiapkan perintah SQL dengan parameter (@user dan @pass).
+            // Ini adalah praktik standar industri untuk mencegah peretasan (Anti SQL Injection).
             MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(
                 "SELECT username, nama_lengkap, role FROM users WHERE username=@user AND password=@pass");
 
+            // Memasukkan nilai yang diketik pengguna di form ke dalam parameter SQL tadi
             cmd.Parameters.AddWithValue("@user", username);
             cmd.Parameters.AddWithValue("@pass", password);
 
-            // Eksekusi parameterized query via Koneksi
+            // Melempar perintah yang sudah terenkapsulasi parameter tersebut ke Koneksi untuk dieksekusi
             return server.eksekusiQuery(cmd);
         }
     }

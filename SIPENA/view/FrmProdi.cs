@@ -12,24 +12,29 @@ using SIPENA.service;
 
 namespace SIPENA.view
 {
+    // Class FrmProdi adalah form untuk mengelola data program studi
     public partial class FrmProdi : Form
     {
+        // Instansiasi class Prodi_serv sebagai otak pemroses data program studi
         Prodi_serv prodiServ = new Prodi_serv();
         ProgramStudi prodi = new ProgramStudi();
 
         string idProdiLama = "";
 
+        // Konstruktor FrmProdi untuk inisialisasi form program studi
         public FrmProdi()
         {
             InitializeComponent();
         }
 
+        // Fungsi untuk menampilkan data program studi ke dalam DataGridView
         private void TampilData()
         {
             dgvProdi.AutoGenerateColumns = false;
             dgvProdi.DataSource = prodiServ.tampilData();
         }
 
+        // Fungsi untuk membersihkan semua inputan di form program studi
         private void Bersihkan()
         {
             IdProdi_txt.Text = prodiServ.buatIdOtomatis();
@@ -39,6 +44,7 @@ namespace SIPENA.view
             NamaProdi_txt.Focus();
         }
 
+        // Tombol Simpan ditekan, maka sistem akan menyimpan data program studi baru ke database
         private void simpan_btn_Click(object sender, EventArgs e)
         {
             if (IdProdi_txt.Text == "" || NamaProdi_txt.Text == "")
@@ -57,6 +63,7 @@ namespace SIPENA.view
             Bersihkan();
         }
 
+        // Tombol Ubah ditekan, maka sistem akan mengubah data program studi yang dipilih di DataGridView
         private void ubah_btn_Click(object sender, EventArgs e)
         {
             if (idProdiLama == "")
@@ -74,6 +81,7 @@ namespace SIPENA.view
             Bersihkan();
         }
 
+        // Tombol Hapus ditekan, maka sistem akan menghapus data program studi yang dipilih di DataGridView
         private void hapus_btn_Click(object sender, EventArgs e)
         {
             if (IdProdi_txt.Text == "")
@@ -93,22 +101,26 @@ namespace SIPENA.view
             }
         }
 
+        // Tombol Batal ditekan, maka sistem akan membersihkan semua inputan di form program studi
         private void batal_btn_Click(object sender, EventArgs e)
         {
             Bersihkan();
         }
 
+        // Tombol Tutup ditekan, maka sistem akan menutup form program studi
         private void tutup_btn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Event handler
         private void FrmProdi_Load(object sender, EventArgs e)
         {
             TampilData();
             Bersihkan();
         }
 
+        // Event handler untuk menangani klik pada sel di DataGridView program studi
         private void dgvProdi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && !dgvProdi.Rows[e.RowIndex].IsNewRow)

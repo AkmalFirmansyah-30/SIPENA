@@ -39,6 +39,13 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvPresensi = new System.Windows.Forms.DataGridView();
+            this.colTanggal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPertemuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNim = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMk = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnTutup = new System.Windows.Forms.Button();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,13 +58,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtSemester = new System.Windows.Forms.MaskedTextBox();
             this.txtPertemuan = new System.Windows.Forms.MaskedTextBox();
-            this.colTanggal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPertemuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNim = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMk = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPresensi)).BeginInit();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +68,7 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(43, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 21);
+            this.label2.Size = new System.Drawing.Size(62, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Tanggal";
             // 
@@ -78,7 +78,7 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(45, 205);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 21);
+            this.label4.Size = new System.Drawing.Size(37, 19);
             this.label4.TabIndex = 3;
             this.label4.Text = "NIM";
             // 
@@ -88,7 +88,7 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(43, 410);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(139, 21);
+            this.label5.Size = new System.Drawing.Size(121, 19);
             this.label5.TabIndex = 4;
             this.label5.Text = "Status Kehadiran";
             // 
@@ -97,7 +97,7 @@
             this.dtpTanggal.Location = new System.Drawing.Point(47, 141);
             this.dtpTanggal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpTanggal.Name = "dtpTanggal";
-            this.dtpTanggal.Size = new System.Drawing.Size(333, 31);
+            this.dtpTanggal.Size = new System.Drawing.Size(333, 27);
             this.dtpTanggal.TabIndex = 5;
             // 
             // txtNim
@@ -106,7 +106,7 @@
             this.txtNim.Location = new System.Drawing.Point(49, 243);
             this.txtNim.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNim.Name = "txtNim";
-            this.txtNim.Size = new System.Drawing.Size(333, 31);
+            this.txtNim.Size = new System.Drawing.Size(333, 27);
             this.txtNim.TabIndex = 6;
             this.txtNim.Leave += new System.EventHandler(this.txtNim_Leave);
             // 
@@ -176,7 +176,7 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(490, 205);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 21);
+            this.label6.Size = new System.Drawing.Size(70, 19);
             this.label6.TabIndex = 14;
             this.label6.Text = "Kode MK";
             this.label6.Click += new System.EventHandler(this.label6_Click);
@@ -185,9 +185,6 @@
             // 
             this.dgvPresensi.AllowUserToAddRows = false;
             this.dgvPresensi.AllowUserToDeleteRows = false;
-            this.dgvPresensi.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPresensi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPresensi.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
             this.dgvPresensi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -208,147 +205,6 @@
             this.dgvPresensi.RowTemplate.Height = 28;
             this.dgvPresensi.Size = new System.Drawing.Size(887, 313);
             this.dgvPresensi.TabIndex = 16;
-            // 
-            // btnTutup
-            // 
-            this.btnTutup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnTutup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTutup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTutup.ForeColor = System.Drawing.Color.White;
-            this.btnTutup.Location = new System.Drawing.Point(709, 536);
-            this.btnTutup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnTutup.Name = "btnTutup";
-            this.btnTutup.Size = new System.Drawing.Size(116, 40);
-            this.btnTutup.TabIndex = 17;
-            this.btnTutup.Text = "✕ Tutup";
-            this.btnTutup.UseVisualStyleBackColor = false;
-            this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
-            // 
-            // pnlHeader
-            // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-            this.pnlHeader.Controls.Add(this.label1);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(889, 67);
-            this.pnlHeader.TabIndex = 18;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(20, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(257, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "👥 Form Input Presensi";
-            // 
-            // pertemuan
-            // 
-            this.pertemuan.AutoSize = true;
-            this.pertemuan.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pertemuan.Location = new System.Drawing.Point(493, 305);
-            this.pertemuan.Name = "pertemuan";
-            this.pertemuan.Size = new System.Drawing.Size(94, 21);
-            this.pertemuan.TabIndex = 19;
-            this.pertemuan.Text = "Pertemuan";
-            // 
-            // txtKodeMk
-            // 
-            this.txtKodeMk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtKodeMk.Location = new System.Drawing.Point(494, 243);
-            this.txtKodeMk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtKodeMk.Name = "txtKodeMk";
-            this.txtKodeMk.Size = new System.Drawing.Size(333, 31);
-            this.txtKodeMk.TabIndex = 15;
-            this.txtKodeMk.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox2_MaskInputRejected);
-            // 
-            // rbHadir
-            // 
-            this.rbHadir.AutoSize = true;
-            this.rbHadir.BackColor = System.Drawing.SystemColors.Window;
-            this.rbHadir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbHadir.ForeColor = System.Drawing.Color.SeaGreen;
-            this.rbHadir.Location = new System.Drawing.Point(47, 450);
-            this.rbHadir.Name = "rbHadir";
-            this.rbHadir.Size = new System.Drawing.Size(120, 29);
-            this.rbHadir.TabIndex = 21;
-            this.rbHadir.TabStop = true;
-            this.rbHadir.Text = "✔  Hadir";
-            this.rbHadir.UseVisualStyleBackColor = false;
-            this.rbHadir.CheckedChanged += new System.EventHandler(this.rbHadir_CheckedChanged);
-            // 
-            // rbIzin
-            // 
-            this.rbIzin.AutoSize = true;
-            this.rbIzin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbIzin.ForeColor = System.Drawing.Color.SteelBlue;
-            this.rbIzin.Location = new System.Drawing.Point(198, 450);
-            this.rbIzin.Name = "rbIzin";
-            this.rbIzin.Size = new System.Drawing.Size(104, 29);
-            this.rbIzin.TabIndex = 22;
-            this.rbIzin.TabStop = true;
-            this.rbIzin.Text = "📄  Izin";
-            this.rbIzin.UseVisualStyleBackColor = true;
-            this.rbIzin.CheckedChanged += new System.EventHandler(this.rbIzin_CheckedChanged);
-            // 
-            // rbSakit
-            // 
-            this.rbSakit.AutoSize = true;
-            this.rbSakit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbSakit.ForeColor = System.Drawing.Color.Red;
-            this.rbSakit.Location = new System.Drawing.Point(345, 450);
-            this.rbSakit.Name = "rbSakit";
-            this.rbSakit.Size = new System.Drawing.Size(115, 29);
-            this.rbSakit.TabIndex = 23;
-            this.rbSakit.TabStop = true;
-            this.rbSakit.Text = "➕  Sakit";
-            this.rbSakit.UseVisualStyleBackColor = true;
-            this.rbSakit.CheckedChanged += new System.EventHandler(this.rbSakit_CheckedChanged);
-            // 
-            // rbAlpha
-            // 
-            this.rbAlpha.AutoSize = true;
-            this.rbAlpha.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbAlpha.ForeColor = System.Drawing.Color.DimGray;
-            this.rbAlpha.Location = new System.Drawing.Point(495, 450);
-            this.rbAlpha.Name = "rbAlpha";
-            this.rbAlpha.Size = new System.Drawing.Size(123, 29);
-            this.rbAlpha.TabIndex = 24;
-            this.rbAlpha.TabStop = true;
-            this.rbAlpha.Text = "✖  Alpha";
-            this.rbAlpha.UseVisualStyleBackColor = true;
-            this.rbAlpha.CheckedChanged += new System.EventHandler(this.rbAlpha_CheckedChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(43, 305);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 21);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "Semester";
-            // 
-            // txtSemester
-            // 
-            this.txtSemester.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSemester.Location = new System.Drawing.Point(47, 345);
-            this.txtSemester.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSemester.Name = "txtSemester";
-            this.txtSemester.Size = new System.Drawing.Size(333, 31);
-            this.txtSemester.TabIndex = 27;
-            // 
-            // txtPertemuan
-            // 
-            this.txtPertemuan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPertemuan.Location = new System.Drawing.Point(494, 345);
-            this.txtPertemuan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPertemuan.Name = "txtPertemuan";
-            this.txtPertemuan.Size = new System.Drawing.Size(333, 31);
-            this.txtPertemuan.TabIndex = 28;
             // 
             // colTanggal
             // 
@@ -406,10 +262,152 @@
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
             // 
+            // btnTutup
+            // 
+            this.btnTutup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnTutup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTutup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTutup.ForeColor = System.Drawing.Color.White;
+            this.btnTutup.Location = new System.Drawing.Point(709, 536);
+            this.btnTutup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTutup.Name = "btnTutup";
+            this.btnTutup.Size = new System.Drawing.Size(116, 40);
+            this.btnTutup.TabIndex = 17;
+            this.btnTutup.Text = "✕ Tutup";
+            this.btnTutup.UseVisualStyleBackColor = false;
+            this.btnTutup.Click += new System.EventHandler(this.btnTutup_Click);
+            // 
+            // pnlHeader
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+            this.pnlHeader.Controls.Add(this.label1);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(889, 67);
+            this.pnlHeader.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(20, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(218, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "👥 Form Input Presensi";
+            // 
+            // pertemuan
+            // 
+            this.pertemuan.AutoSize = true;
+            this.pertemuan.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pertemuan.Location = new System.Drawing.Point(493, 305);
+            this.pertemuan.Name = "pertemuan";
+            this.pertemuan.Size = new System.Drawing.Size(82, 19);
+            this.pertemuan.TabIndex = 19;
+            this.pertemuan.Text = "Pertemuan";
+            // 
+            // txtKodeMk
+            // 
+            this.txtKodeMk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtKodeMk.Location = new System.Drawing.Point(494, 243);
+            this.txtKodeMk.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtKodeMk.Name = "txtKodeMk";
+            this.txtKodeMk.Size = new System.Drawing.Size(333, 27);
+            this.txtKodeMk.TabIndex = 15;
+            this.txtKodeMk.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox2_MaskInputRejected);
+            // 
+            // rbHadir
+            // 
+            this.rbHadir.AutoSize = true;
+            this.rbHadir.BackColor = System.Drawing.SystemColors.Window;
+            this.rbHadir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbHadir.ForeColor = System.Drawing.Color.SeaGreen;
+            this.rbHadir.Location = new System.Drawing.Point(47, 450);
+            this.rbHadir.Name = "rbHadir";
+            this.rbHadir.Size = new System.Drawing.Size(98, 24);
+            this.rbHadir.TabIndex = 21;
+            this.rbHadir.TabStop = true;
+            this.rbHadir.Text = "✔  Hadir";
+            this.rbHadir.UseVisualStyleBackColor = false;
+            this.rbHadir.CheckedChanged += new System.EventHandler(this.rbHadir_CheckedChanged);
+            // 
+            // rbIzin
+            // 
+            this.rbIzin.AutoSize = true;
+            this.rbIzin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbIzin.ForeColor = System.Drawing.Color.SteelBlue;
+            this.rbIzin.Location = new System.Drawing.Point(198, 450);
+            this.rbIzin.Name = "rbIzin";
+            this.rbIzin.Size = new System.Drawing.Size(85, 24);
+            this.rbIzin.TabIndex = 22;
+            this.rbIzin.TabStop = true;
+            this.rbIzin.Text = "📄  Izin";
+            this.rbIzin.UseVisualStyleBackColor = true;
+            this.rbIzin.CheckedChanged += new System.EventHandler(this.rbIzin_CheckedChanged);
+            // 
+            // rbSakit
+            // 
+            this.rbSakit.AutoSize = true;
+            this.rbSakit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbSakit.ForeColor = System.Drawing.Color.Red;
+            this.rbSakit.Location = new System.Drawing.Point(345, 450);
+            this.rbSakit.Name = "rbSakit";
+            this.rbSakit.Size = new System.Drawing.Size(94, 24);
+            this.rbSakit.TabIndex = 23;
+            this.rbSakit.TabStop = true;
+            this.rbSakit.Text = "➕  Sakit";
+            this.rbSakit.UseVisualStyleBackColor = true;
+            this.rbSakit.CheckedChanged += new System.EventHandler(this.rbSakit_CheckedChanged);
+            // 
+            // rbAlpha
+            // 
+            this.rbAlpha.AutoSize = true;
+            this.rbAlpha.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbAlpha.ForeColor = System.Drawing.Color.DimGray;
+            this.rbAlpha.Location = new System.Drawing.Point(495, 450);
+            this.rbAlpha.Name = "rbAlpha";
+            this.rbAlpha.Size = new System.Drawing.Size(101, 24);
+            this.rbAlpha.TabIndex = 24;
+            this.rbAlpha.TabStop = true;
+            this.rbAlpha.Text = "✖  Alpha";
+            this.rbAlpha.UseVisualStyleBackColor = true;
+            this.rbAlpha.CheckedChanged += new System.EventHandler(this.rbAlpha_CheckedChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(43, 305);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(71, 19);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "Semester";
+            // 
+            // txtSemester
+            // 
+            this.txtSemester.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSemester.Location = new System.Drawing.Point(47, 345);
+            this.txtSemester.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSemester.Name = "txtSemester";
+            this.txtSemester.Size = new System.Drawing.Size(333, 27);
+            this.txtSemester.TabIndex = 27;
+            // 
+            // txtPertemuan
+            // 
+            this.txtPertemuan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPertemuan.Location = new System.Drawing.Point(494, 345);
+            this.txtPertemuan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPertemuan.Name = "txtPertemuan";
+            this.txtPertemuan.Size = new System.Drawing.Size(333, 27);
+            this.txtPertemuan.TabIndex = 28;
+            // 
             // FrmPresensi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(889, 853);
             this.Controls.Add(this.dgvPresensi);

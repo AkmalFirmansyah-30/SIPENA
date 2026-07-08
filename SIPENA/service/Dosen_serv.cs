@@ -12,10 +12,11 @@ namespace SIPENA.service
 {
     public class Dosen_serv
     {
+        // Memanggil jembatan koneksi ke database
         Koneksi kon = new Koneksi();
         string Query;
 
-        // 1. Fungsi Tampil Data
+        // Fungsi Tampil Data
         public DataTable TampilData()
         {
             // Menggunakan SELECT * akan otomatis mengambil seluruh kolom termasuk 2 kolom baru
@@ -29,7 +30,7 @@ namespace SIPENA.service
             return TampilData();
         }
 
-        // 2. Fungsi Simpan (Insert) - SUDAH DIPERBARUI
+        // Fungsi Simpan (Insert) - SUDAH DIPERBARUI
         public bool Simpan(Dosen dsn)
         {
             // Query disesuaikan dengan urutan kolom database terbaru Anda
@@ -40,7 +41,7 @@ namespace SIPENA.service
             return hasil > 0;
         }
 
-        // 3. Fungsi Ubah (Update) - SUDAH DIPERBARUI
+        // Fungsi Ubah (Update) - SUDAH DIPERBARUI
         public bool Ubah(Dosen dsn)
         {
             // Query ditambahkan untuk memperbarui jenis_kelamin dan program_studi
@@ -56,7 +57,7 @@ namespace SIPENA.service
             return hasil > 0;
         }
 
-        // 4. Fungsi Hapus (Delete)
+        // Fungsi Hapus (Delete)
         public bool Hapus(string nidn)
         {
             string query = $"DELETE FROM dosen WHERE nidn = '{nidn}'";

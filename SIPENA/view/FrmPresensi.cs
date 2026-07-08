@@ -6,54 +6,126 @@ using SIPENA.model;
 
 namespace SIPENA.view
 {
+    // Class FrmPresensi adalah form untuk mengelola data presensi mahasiswa
     public partial class FrmPresensi : Form
     {
         private PresensiService service = new PresensiService();
 
+        // Konstruktor FrmPresensi untuk inisialisasi form presensi
         public FrmPresensi()
         {
             InitializeComponent();
-            // Cegah admin membuka form Presensi (fitur tidak tersedia untuk admin)
-            string roleUser = (SesiLogin.Role ?? string.Empty).ToLower();
-            if (roleUser == "admin")
-            {
-                MessageBox.Show("Akses Ditolak: Admin tidak memiliki akses ke modul Presensi.", "Akses Ditolak", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                // Tutup form segera
-                this.Close();
-                return;
-            }
 
             dgvPresensi.AutoGenerateColumns = false;
 
-            TampilkanData();
-            // Atur hak akses sesuai role user
+            // Atur hak akses dulu agar NIM terisi jika mahasiswa
             AturHakAkses();
+
+            // Baru tampilkan data sesuai role
+            TampilkanData();
         }
 
+        // Metode untuk menampilkan data presensi di DataGridView sesuai dengan role pengguna
         private void TampilkanData()
         {
-            dgvPresensi.DataSource = service.TampilkanSemua();
+            string roleUser = (SesiLogin.Role ?? string.Empty).ToLower();
+
+            if (roleUser == "mahasiswa")
+            {
+                // Jika Mahasiswa, tampilkan hanya data miliknya berdasarkan NIM (Username)
+                dgvPresensi.DataSource = service.TampilkanBerdasarkanNim(SesiLogin.Username);
+            }
+            else
+            {
+                // Jika Dosen, tampilkan semua
+                dgvPresensi.DataSource = service.TampilkanSemua();
+            }
         }
 
+        // Metode untuk membersihkan form inputan presensi
         private void ClearForm()
         {
+            // Kosongkan semua inputan di form presensi
             dtpTanggal.Value = DateTime.Now;
-            txtNim.Clear();
             txtKodeMk.Clear();
             txtPertemuan.Clear();
 
+            // Kosongkan semua radio button status kehadiran
             rbHadir.Checked = false;
             rbIzin.Checked = false;
             rbSakit.Checked = false;
             rbAlpha.Checked = false;
 
-            txtNim.Focus();
+            string roleUser = (SesiLogin.Role ?? string.Empty).ToLower();
+            if (roleUser != "mahasiswa")
+            {
+                // Hanya hapus isi kolom NIM jika yang login BUKAN mahasiswa
+                txtNim.Clear();
+                txtNim.Focus();
+            }
+            else
+            {
+                txtKodeMk.Focus(); // Fokus ke mata kuliah langsung untuk mahasiswa
+            }
         }
 
+        // Metode untuk mengatur hak akses pengguna berdasarkan role (Mahasiswa atau Dosen)
+        private void AturHakAkses()
+        {
+            string roleUser = (SesiLogin.Role ?? string.Empty).ToLower();
+
+            if (roleUser == "mahasiswa")
+            {
+                // MAHASISWA: Bisa melakukan input (Simpan), tidak bisa Ubah/Hapus
+                btnSimpan.Visible = true;
+                btnUbah.Visible = false;
+                btnHapus.Visible = false;
+                btnClear.Visible = true;
+
+                // NIM otomatis terisi dari akun login mahasiswa & tidak bisa diedit manual
+                txtNim.Text = SesiLogin.Username;
+                txtNim.Enabled = false;
+
+                // Buka semua inputan lainnya agar mahasiswa bisa mengisi data presensinya
+                txtKodeMk.Enabled = true;
+                txtSemester.Enabled = true;
+                txtPertemuan.Enabled = true;
+                dtpTanggal.Enabled = true;
+                rbHadir.Enabled = true;
+                rbIzin.Enabled = true;
+                rbSakit.Enabled = true;
+                rbAlpha.Enabled = true;
+
+                // Ambil data semester otomatis berdasarkan NIM mahasiswa yang login
+                txtNim_Leave(null, null);
+            }
+            else if (roleUser == "dosen")
+            {
+                // DOSEN: Hanya bisa melihat data saja (Read-Only)
+                // Sembunyikan semua tombol aksi manipulasi data
+                btnSimpan.Visible = false;
+                btnUbah.Visible = false;
+                btnHapus.Visible = false;
+
+                // Kunci/Disable semua form inputan agar dosen tidak bisa mengisi/mengubah
+                txtNim.Enabled = false;
+                txtKodeMk.Enabled = false;
+                txtSemester.Enabled = false;
+                txtPertemuan.Enabled = false;
+                dtpTanggal.Enabled = false;
+                rbHadir.Enabled = false;
+                rbIzin.Enabled = false;
+                rbSakit.Enabled = false;
+                rbAlpha.Enabled = false;
+            }
+        }
+
+        // Event handler untuk tombol Simpan, menyimpan data presensi ke database
         private void btnSimpan_Click(object sender, EventArgs e)
         {
             try
             {
+                // Validasi inputan sebelum menyimpan data presensi
                 Presensi p = new Presensi();
 
                 p.Tanggal = dtpTanggal.Value;
@@ -61,17 +133,14 @@ namespace SIPENA.view
                 p.KodeMk = txtKodeMk.Text;
                 p.Pertemuan = Convert.ToInt32(txtPertemuan.Text);
 
-                if (rbHadir.Checked)
-                    p.StatusHadir = "Hadir";
-                else if (rbIzin.Checked)
-                    p.StatusHadir = "Izin";
-                else if (rbSakit.Checked)
-                    p.StatusHadir = "Sakit";
-                else if (rbAlpha.Checked)
-                    p.StatusHadir = "Alpha";
+                if (rbHadir.Checked) p.StatusHadir = "Hadir";
+                else if (rbIzin.Checked) p.StatusHadir = "Izin";
+                else if (rbSakit.Checked) p.StatusHadir = "Sakit";
+                else if (rbAlpha.Checked) p.StatusHadir = "Alpha";
 
                 int hasil = service.Simpan(p);
 
+                // Jika berhasil, tampilkan pesan sukses dan refresh data di DataGridView
                 if (hasil > 0)
                 {
                     MessageBox.Show(
@@ -94,25 +163,22 @@ namespace SIPENA.view
             }
         }
 
+        // Event handler
         private void btnUbah_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                "Silakan pilih data pada tabel di bawah untuk melakukan perubahan.",
-                "Informasi");
+            // Tombol Ubah ditekan, tetapi karena mahasiswa tidak bisa mengubah data presensi, tampilkan pesan informasi
+            MessageBox.Show("Silakan pilih data pada tabel di bawah untuk melakukan perubahan.", "Informasi");
         }
 
+        // Event handler untuk tombol Hapus, menghapus data presensi yang dipilih dari DataGridView
         private void btnHapus_Click(object sender, EventArgs e)
         {
             try
             {
-                int id = int.Parse(
-                    dgvPresensi.CurrentRow.Cells[0].Value.ToString());
+                int id = int.Parse(dgvPresensi.CurrentRow.Cells[0].Value.ToString());
 
-                if (MessageBox.Show(
-                    "Yakin ingin menghapus data presensi ini?",
-                    "Konfirmasi",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question) == DialogResult.Yes)
+                // Konfirmasi sebelum menghapus data presensi
+                if (MessageBox.Show("Yakin ingin menghapus data presensi ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     int hasil = service.Hapus(id);
 
@@ -125,126 +191,33 @@ namespace SIPENA.view
             }
             catch (Exception)
             {
-                MessageBox.Show(
-                    "Pilih baris data yang ingin dihapus pada tabel.");
+                MessageBox.Show("Pilih baris data yang ingin dihapus pada tabel.");
             }
         }
 
+        // Event handler untuk tombol Clear, membersihkan semua inputan di form presensi
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearForm();
         }
 
+        // Event handler untuk tombol Tutup
         private void btnTutup_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void AturHakAkses()
-        {
-            // Gunakan ToLower agar kebal dari salah ketik huruf besar/kecil di DB
-            string roleUser = (SesiLogin.Role ?? string.Empty).ToLower();
-
-            if (roleUser == "mahasiswa")
-            {
-                // MAHASISWA: Hanya bisa melihat rekap (Read-Only)
-                btnSimpan.Visible = false;
-                btnUbah.Visible = false;
-                btnHapus.Visible = false;
-                
-                txtNim.Enabled = false;
-                txtKodeMk.Enabled = false;
-                txtSemester.Enabled = false;
-                txtPertemuan.Enabled = false;
-
-                dtpTanggal.Enabled = false;
-
-                rbHadir.Enabled = false;
-                rbIzin.Enabled = false;
-                rbSakit.Enabled = false;
-                rbAlpha.Enabled = false;
-            }
-            else if (roleUser == "dosen")
-            {
-                // DOSEN: Bertugas input presensi, tapi tidak bisa hapus riwayat
-                btnSimpan.Visible = true;
-                btnUbah.Visible = true;
-                btnHapus.Visible = false; // Sengaja dikunci
-
-                // Pastikan semua inputan terbuka untuk Dosen
-                txtNim.Enabled = true;
-                txtKodeMk.Enabled = true;
-                txtSemester.Enabled = true; // Atau false jika ingin otomatis dari txtNim_Leave
-                txtPertemuan.Enabled = true;
-                dtpTanggal.Enabled = true;
-                rbHadir.Enabled = true;
-                rbIzin.Enabled = true;
-                rbSakit.Enabled = true;
-                rbAlpha.Enabled = true;
-            }
-            else if (roleUser == "admin")
-            {
-                // ADMIN (Staf TU): Full control, bisa hapus jika ada kesalahan
-                btnSimpan.Visible = true;
-                btnUbah.Visible = true;
-                btnHapus.Visible = true; 
-
-                // Pastikan semua inputan terbuka untuk Admin
-                txtNim.Enabled = true;
-                txtKodeMk.Enabled = true;
-                txtSemester.Enabled = true;
-                txtPertemuan.Enabled = true;
-                dtpTanggal.Enabled = true;
-                rbHadir.Enabled = true;
-                rbIzin.Enabled = true;
-                rbSakit.Enabled = true;
-                rbAlpha.Enabled = true;
-            }
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-    
-      
-
+        // Event handler untuk validasi input Pertemuan agar hanya menerima angka
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (txtPertemuan.Text.Length > 0 &&
-                !txtPertemuan.Text.All(char.IsDigit))
+            if (txtPertemuan.Text.Length > 0 && !txtPertemuan.Text.All(char.IsDigit))
             {
                 MessageBox.Show("Pertemuan hanya boleh angka!");
                 txtPertemuan.Clear();
             }
         }
 
-        private void rbHadir_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rbIzin_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rbSakit_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rbAlpha_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        // Event handler untuk mengambil nilai semester mahasiswa secara otomatis saat NIM diisi
         private void txtNim_Leave(object sender, EventArgs e)
         {
             if (txtNim.Text.Trim() != "")
@@ -257,5 +230,13 @@ namespace SIPENA.view
                     txtSemester.Text = "";
             }
         }
+
+        // Biarkan event yang kosong agar Designer form tidak error
+        private void label6_Click(object sender, EventArgs e) { }
+        private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e) { }
+        private void rbHadir_CheckedChanged(object sender, EventArgs e) { }
+        private void rbIzin_CheckedChanged(object sender, EventArgs e) { }
+        private void rbSakit_CheckedChanged(object sender, EventArgs e) { }
+        private void rbAlpha_CheckedChanged(object sender, EventArgs e) { }
     }
 }
