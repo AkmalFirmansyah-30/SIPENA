@@ -69,7 +69,6 @@ namespace SIPENA.service
                 n.NilaiAkhir.ToString(CultureInfo.InvariantCulture) + ", " +
                 "'" + n.Grade + "')";
 
-            // CATATAN: Query dibangun dengan konkatenasi string — rentan terhadap SQL Injection.
             // Pertimbangkan menggunakan parameterized query atau command dengan parameter.
             return koneksi.eksekusiBukanQuery(query);
         }
@@ -99,7 +98,6 @@ namespace SIPENA.service
                 "grade = '" + n.Grade + "' " +
                 "WHERE id_nilai = " + n.IdNilai;
 
-            // CATATAN: Sama seperti penyimpanan, update ini menggunakan konkatenasi string.
             // Disarankan menggunakan parameter untuk menghindari SQL Injection.
             return koneksi.eksekusiBukanQuery(query);
         }
