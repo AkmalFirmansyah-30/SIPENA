@@ -98,7 +98,6 @@ namespace SIPENA.service
                 "grade = '" + n.Grade + "' " +
                 "WHERE id_nilai = " + n.IdNilai;
 
-            // Disarankan menggunakan parameter untuk menghindari SQL Injection.
             return koneksi.eksekusiBukanQuery(query);
         }
 

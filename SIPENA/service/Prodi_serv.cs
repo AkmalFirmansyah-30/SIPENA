@@ -45,13 +45,13 @@ namespace SIPENA.service
             //string query = $"DELETE FROM program_studi WHERE id_prodi='{idProdi}'";
             //kon.eksekusiBukanQuery(query);
 
-            // 1. Hapus nilai milik mahasiswa di prodi tersebut
+            // Hapus nilai milik mahasiswa di prodi tersebut
             string queryNilai = $"DELETE FROM nilai WHERE nim IN (SELECT nim FROM mahasiswa WHERE id_prodi='{idProdi}')";
-            // 2. Hapus presensi milik mahasiswa di prodi tersebut
+            // Hapus presensi milik mahasiswa di prodi tersebut
             string queryPresensi = $"DELETE FROM presensi WHERE nim IN (SELECT nim FROM mahasiswa WHERE id_prodi='{idProdi}')";
-            // 3. Hapus mahasiswa di prodi tersebut
+            // Hapus mahasiswa di prodi tersebut
             string queryMahasiswa = $"DELETE FROM mahasiswa WHERE id_prodi='{idProdi}'";
-            // 4. Hapus prodi itu sendiri
+            // Hapus prodi itu sendiri
             string queryProdi = $"DELETE FROM program_studi WHERE id_prodi='{idProdi}'";
 
             // Eksekusi query secara berurutan untuk menghindari error relasi
