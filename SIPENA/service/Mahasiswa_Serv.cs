@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace SIPENA.service
 {
+    // Class Modifier (Internal): Class service untuk menangani logika manipulasi data (CRUD) entitas Mahasiswa
     internal class Mahasiswa_Serv
     {
-        // Memanggil class Koneksi sebagai jembatan ke database
-        // Keterangan singkat: objek ini digunakan untuk mengeksekusi query ke DB
+        // Buat objek koneksi ke database
         Koneksi kon = new Koneksi();
 
         // Ambil daftar mahasiswa beserta nama program studi (untuk ditampilkan di UI)
@@ -32,7 +32,6 @@ namespace SIPENA.service
         }
 
         // Simpan data mahasiswa baru ke database
-        // NOTE: menggunakan string interpolation (perlu parameterized query di masa depan)
         public void tambahData(Mahasiswa mhs)
         {
             string query = $"insert into mahasiswa (nim, nama_mahasiswa, id_prodi, semester) " +

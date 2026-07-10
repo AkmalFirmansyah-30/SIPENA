@@ -27,9 +27,7 @@ namespace SIPENA.view
 
         private void FrmMenuUtama_Load(object sender, EventArgs e)
         {
-            // SET DATA USER AKTIF
-            // (Sesuaikan nama toolStripStatusLabel1 dengan yang ada di Properties Anda)
-            // Gunakan nama panggilan (kata pertama dari nama lengkap) untuk tampilan sidebar
+            // Tampilkan nama lengkap dan role user di Sidebar
             string namaLengkap = SesiLogin.NamaLengkap ?? "User"; // Jaga-jaga jika data kosong
             string[] potonganNama = namaLengkap.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             string namaPanggilan = (potonganNama.Length > 0) ? potonganNama[0] : namaLengkap;
@@ -68,8 +66,7 @@ namespace SIPENA.view
         // Fungsi untuk mengatur hak akses menu berdasarkan role user
         private void AturHakAksesMenu()
         {
-            // SEMBUNYIKAN SEMUA MENU TERLEBIH DAHULU (Default Closed)
-            // Kategori (Designer names: label11 = Master Data, label8 = Transaksi)
+            // Sembunyikan semua kategori dan menu terlebih dahulu
             if (label11 != null) label11.Visible = false;
             if (label8 != null) label8.Visible = false;
 
@@ -146,7 +143,7 @@ namespace SIPENA.view
                 {
                     conn.Open();
 
-                    // 1. Hitung Total Mahasiswa
+                    // Hitung Total Mahasiswa
                     string queryMhs = "SELECT COUNT(*) FROM mahasiswa";
                     using (MySqlCommand cmd = new MySqlCommand(queryMhs, conn))
                     {
@@ -155,7 +152,7 @@ namespace SIPENA.view
                         if (lblAngkaMhs != null) lblAngkaMhs.Text = totalMhs.ToString();
                     }
 
-                    // 2. Hitung Total Dosen
+                    // Hitung Total Dosen
                     string queryDosen = "SELECT COUNT(*) FROM dosen";
                     using (MySqlCommand cmd = new MySqlCommand(queryDosen, conn))
                     {
@@ -164,7 +161,7 @@ namespace SIPENA.view
                         if (lblAngkaDosen != null) lblAngkaDosen.Text = totalDosen.ToString();
                     }
 
-                    // 3. Hitung Total Mata Kuliah
+                    // Hitung Total Mata Kuliah
                     string queryMatkul = "SELECT COUNT(*) FROM mata_kuliah";
                     using (MySqlCommand cmd = new MySqlCommand(queryMatkul, conn))
                     {
@@ -303,7 +300,6 @@ namespace SIPENA.view
                 FrmLogin login = new FrmLogin();
                 login.Show();
 
-                // Tutup Form Menu Utama ini
                 this.Close();
             }
         }
@@ -316,61 +312,51 @@ namespace SIPENA.view
 
         private void labelNilai_Click(object sender, EventArgs e)
         {
-            // Buka form nilai
             BukaForm(new FrmNilai());
         }
 
         private void icnNilai_Click(object sender, EventArgs e)
         {
-            // Buka form nilai
             BukaForm(new FrmNilai());
         }
 
         private void icnMhs_Click(object sender, EventArgs e)
         {
-            // Buka form mahasiswa
             BukaForm(new FrmMahasiswa());
         }
 
         private void labelMhs_Click(object sender, EventArgs e)
         {
-            // Buka form mahasiswa
             BukaForm(new FrmMahasiswa());
         }
 
         private void icnDosen_Click(object sender, EventArgs e)
         {
-            // Buka form dosen
             BukaForm(new Dosen_frm());
         }
 
         private void labelDosen_Click(object sender, EventArgs e)
         {
-            // Buka form dosen
             BukaForm(new Dosen_frm());
         }
 
         private void icnMatkul_Click(object sender, EventArgs e)
         {
-            // Buka form mata kuliah
             BukaForm(new Matkul_frm());
         }
 
         private void labelMatkul_Click(object sender, EventArgs e)
         {
-            // Buka form mata kuliah
             BukaForm(new Matkul_frm());
         }
 
         private void labelProdi_Click(object sender, EventArgs e)
         {
-            // Buka form program studi
             BukaForm(new FrmProdi());
         }
 
         private void icnProdi_Click(object sender, EventArgs e)
         {
-            // Buka form program studi
             BukaForm(new FrmProdi());
         }
     }

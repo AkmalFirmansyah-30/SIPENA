@@ -101,8 +101,7 @@ namespace SIPENA.view
             }
             else if (roleUser == "dosen")
             {
-                // DOSEN: Hanya bisa melihat data saja (Read-Only)
-                // Sembunyikan semua tombol aksi manipulasi data
+                // DOSEN: Tidak bisa melakukan input (Simpan), Ubah, atau Hapus data presensi
                 btnSimpan.Visible = false;
                 btnUbah.Visible = false;
                 btnHapus.Visible = false;

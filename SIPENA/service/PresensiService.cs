@@ -12,8 +12,7 @@ namespace SIPENA.service
         // Memanggil class Koneksi untuk menghubungkan service ini ke database
         Koneksi koneksi = new Koneksi();
 
-        // Fungsi untuk DOSEN: mengambil semua data presensi
-        // Menggunakan teknik JOIN untuk menggabungkan data dari tabel presensi, mahasiswa, dan mata_kuliah
+        // FUNGSI UNTUK ADMIN: Ambil semua data presensi dari database
         public DataTable TampilkanSemua()
         {
             string query = "SELECT p.id_presensi, p.tanggal, p.pertemuan, p.nim, " +
@@ -24,8 +23,7 @@ namespace SIPENA.service
             return koneksi.eksekusiQuery(query);
         }
 
-        // FUNGSI UNTUK MAHASISWA: Ambil data berdasarkan NIM saja
-        // Logikanya sama dengan TampilkanSemua, tapi difilter (WHERE) agar hanya menampilkan presensi milik 1 NIM saja
+        // FUNGSI UNTUK MAHASISWA: Ambil data presensi berdasarkan NIM mahasiswa yang sedang login
         public DataTable TampilkanBerdasarkanNim(string nim)
         {
             string query = "SELECT p.id_presensi, p.tanggal, p.pertemuan, p.nim, " +

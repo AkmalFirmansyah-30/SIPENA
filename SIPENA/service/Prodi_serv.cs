@@ -38,8 +38,7 @@ namespace SIPENA.service
             kon.eksekusiBukanQuery(query);
         }
 
-        // Menghapus data Program Studi secara manual dari bawah ke atas (Manual Cascading Delete)
-        // Ini dilakukan agar tidak terjadi error bentrok relasi (Foreign Key Constraint)
+        // Menghapus data Program Studi beserta seluruh data terkait (mahasiswa, nilai, presensi) berdasarkan ID Program Studi
         public void hapusData(string idProdi)
         {
             //string query = $"DELETE FROM program_studi WHERE id_prodi='{idProdi}'";

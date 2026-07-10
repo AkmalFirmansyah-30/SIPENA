@@ -6,13 +6,13 @@ using System.Globalization;
 
 namespace SIPENA.service
 {
+    // Class & Access Modifier: Blueprint entitas Nilai dengan hak akses terbatas (internal) di dalam project ini saja
     internal class NilaiService
     {
         // Objek koneksi untuk berkomunikasi dengan database
         private Koneksi koneksi = new Koneksi();
 
-        // MENAMPILKAN SEMUA DATA NILAI (UNTUK DOSEN & ADMIN)
-        // Mengambil semua record nilai beserta informasi mahasiswa dan mata kuliah
+        // MENAMPILKAN SEMUA DATA NILAI (UNTUK ADMIN)
         public DataTable TampilkanSemua()
         {
             string query =
@@ -25,8 +25,7 @@ namespace SIPENA.service
             return koneksi.eksekusiQuery(query);
         }
 
-        // MENAMPILKAN DATA NILAI KHUSUS 1 MAHASISWA (BERDASARKAN NIM LOGIN)
-        // Mengambil record nilai untuk satu mahasiswa berdasarkan NIM
+        // MENAMPILKAN DATA NILAI BERDASARKAN NIM (UNTUK MAHASISWA)
         public DataTable TampilkanBerdasarkanNim(string nim)
         {
             string query =
@@ -43,8 +42,7 @@ namespace SIPENA.service
         // MENYIMPAN DATA NILAI BARU
         public int Simpan(Nilai n)
         {
-            // Hitung nilai akhir berdasarkan bobot: UTS 30%, UAS 40%, Tugas 30%
-            // Pembulatan dilakukan ke 2 desimal untuk konsistensi penyimpanan
+            // Hitung nilai akhir berdasarkan bobot yang telah ditentukan
             n.NilaiAkhir = (float)Math.Round(
                 (n.NilaiUts * 0.3f) +
                 (n.NilaiUas * 0.4f) +

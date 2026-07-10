@@ -184,13 +184,13 @@ namespace SIPENA.view
                 }
 
                 // Penyesuaian Index dengan query di NilaiService
-                idEdit = Convert.ToInt32(dgvNilai.CurrentRow.Cells[0].Value);
-                txtNim.Text = dgvNilai.CurrentRow.Cells[1].Value.ToString();
-                txtKodeMk.Text = dgvNilai.CurrentRow.Cells[3].Value.ToString(); // Index 3: kode_mk
-                txtSemester.Text = dgvNilai.CurrentRow.Cells[5].Value.ToString(); // Index 5: semester
-                txtUts.Text = dgvNilai.CurrentRow.Cells[6].Value.ToString(); // Index 6: nilai_uts
-                txtUas.Text = dgvNilai.CurrentRow.Cells[7].Value.ToString(); // Index 7: nilai_uas
-                txtTugas.Text = dgvNilai.CurrentRow.Cells[8].Value.ToString(); // Index 8: nilai_tugas
+                idEdit = Convert.ToInt32(dgvNilai.CurrentRow.Cells[0].Value); 
+                txtNim.Text = dgvNilai.CurrentRow.Cells[1].Value.ToString(); 
+                txtKodeMk.Text = dgvNilai.CurrentRow.Cells[3].Value.ToString(); 
+                txtSemester.Text = dgvNilai.CurrentRow.Cells[5].Value.ToString(); 
+                txtUts.Text = dgvNilai.CurrentRow.Cells[6].Value.ToString(); 
+                txtUas.Text = dgvNilai.CurrentRow.Cells[7].Value.ToString(); 
+                txtTugas.Text = dgvNilai.CurrentRow.Cells[8].Value.ToString(); 
 
                 txtNim.Enabled = false;
                 txtKodeMk.Enabled = false;

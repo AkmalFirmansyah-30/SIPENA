@@ -9,6 +9,7 @@ using SIPENA.konfigurasi;
 
 namespace SIPENA.service
 {
+    // Class & Access Modifier: Blueprint entitas Mata Kuliah dengan hak akses terbatas (internal) di dalam project ini saja
     internal class Matkul_serv
     {
         // Memanggil jembatan koneksi ke database

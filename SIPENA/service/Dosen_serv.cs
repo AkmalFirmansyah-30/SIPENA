@@ -10,6 +10,7 @@ using SIPENA.model;
 
 namespace SIPENA.service
 {
+    // Class Modifier (Public): Class service untuk menangani logika manipulasi data (CRUD) entitas Dosen
     public class Dosen_serv
     {
         // Memanggil jembatan koneksi ke database
@@ -30,7 +31,7 @@ namespace SIPENA.service
             return TampilData();
         }
 
-        // Fungsi Simpan (Insert) - SUDAH DIPERBARUI
+        // Fungsi Simpan (Insert)
         public bool Simpan(Dosen dsn)
         {
             // Query disesuaikan dengan urutan kolom database terbaru Anda
@@ -41,7 +42,7 @@ namespace SIPENA.service
             return hasil > 0;
         }
 
-        // Fungsi Ubah (Update) - SUDAH DIPERBARUI
+        // Fungsi Ubah (Update)
         public bool Ubah(Dosen dsn)
         {
             // Query ditambahkan untuk memperbarui jenis_kelamin dan program_studi
@@ -60,6 +61,7 @@ namespace SIPENA.service
         // Fungsi Hapus (Delete)
         public bool Hapus(string nidn)
         {
+            // Query untuk menghapus data dosen berdasarkan NIDN
             string query = $"DELETE FROM dosen WHERE nidn = '{nidn}'";
 
             int hasil = kon.eksekusiBukanQuery(query);

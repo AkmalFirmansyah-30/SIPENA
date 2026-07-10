@@ -6,19 +6,15 @@ using System.Threading.Tasks;
 
 namespace SIPENA.model
 {
-    // KONSEP OOP: Static Class
-    // Class 'static' tidak bisa diinstansiasi (tidak bisa dibuat objeknya dengan keyword 'new').
-    // Nilai di dalam class ini bersifat global dan tetap utuh di memori selama aplikasi berjalan.
+    // Static Class: Bersifat global di memori dan tidak perlu diinstansiasi (tanpa 'new') selama aplikasi berjalan
     public static class SesiLogin
     {
-        // KONSEP OOP: Encapsulation (Static Properties)
-        // Menggunakan { get; set; } untuk mengkapsulasi data sesi pengguna yang sedang login.
+        // Encapsulation: Menyimpan data sesi pengguna yang sedang login secara aman menggunakan { get; set; }
         public static string Username { get; set; }
         public static string NamaLengkap { get; set; }
         public static string Role { get; set; }
 
-        // KONSEP OOP: Method / Behavior
-        // Fungsi untuk mereset atau membersihkan data sesi kembali ke kondisi kosong saat pengguna keluar.
+        // Method: Fungsi untuk membersihkan data memori sesi saat pengguna melakukan logout
         public static void Logout()
         {
             Username = "";

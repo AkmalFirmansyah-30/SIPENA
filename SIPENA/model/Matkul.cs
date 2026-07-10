@@ -6,16 +6,10 @@ using System.Threading.Tasks;
 
 namespace SIPENA.model
 {
-    // KONSEP OOP: Class & Access Modifier (internal)
-    // Class Matkul (Mata Kuliah) berfungsi sebagai cetakan (blueprint) untuk objek mata kuliah.
-    // Menggunakan modifier 'internal' agar class ini eksklusif dan hanya bisa digunakan 
-    // oleh file-file yang berada di dalam project SIPENA ini saja.
+    // Class & Access Modifier: Blueprint entitas Mata Kuliah dengan hak akses terbatas (internal) di dalam project ini saja
     internal class Matkul
     {
-        // KONSEP OOP: Encapsulation (Auto-Implemented Properties)
-        // Sintaks { get; set; } mengkapsulasi data dengan menyembunyikan variabel private di latar belakang.
-        // 'get' berfungsi sebagai jalan masuk untuk membaca data, 
-        // sedangkan 'set' berfungsi sebagai jalan masuk untuk mengubah atau mengisi data.
+        // Encapsulation: Menggunakan { get; set; } untuk membaca (get) dan mengisi (set) data secara aman
         public string KodeMk { get; set; }
         public string NamaMk { get; set; }
         public int Sks { get; set; }

@@ -6,16 +6,10 @@ using System.Threading.Tasks;
 
 namespace SIPENA.model
 {
-    // KONSEP OOP: Class & Access Modifier (internal)
-    // Class ProgramStudi berfungsi sebagai cetakan (blueprint) untuk objek data program studi.
-    // Modifier 'internal' membatasi hak aksesnya agar eksklusif hanya bisa digunakan 
-    // di dalam lingkup project aplikasi SIPENA ini saja.
+    // Class & Access Modifier: Blueprint entitas Program Studi dengan hak akses terbatas (internal) di dalam project ini saja
     internal class ProgramStudi
     {
-        // KONSEP OOP: Encapsulation (Auto-Implemented Properties)
-        // Sintaks { get; set; } adalah cara praktis menerapkan Encapsulation.
-        // Data disembunyikan secara aman di latar belakang, lalu kita menggunakan 
-        // 'get' untuk mengambil datanya dan 'set' untuk mengisi/memanipulasi datanya.
+        // Encapsulation: Menggunakan { get; set; } untuk membaca (get) dan mengisi (set) data secara aman
         public string IdProdi { get; set; }
         public string NamaProdi { get; set; }
     }
