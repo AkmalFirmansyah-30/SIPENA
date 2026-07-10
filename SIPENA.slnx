@@ -1,3 +1,6 @@
 <Solution>
   <Project Path="SIPENA/SIPENA.csproj" Id="9088d40f-8bbc-46af-af4e-8a113f18baef" />
+  <Project Path="SIPENA_Installer/SIPENA_Installer.vdproj" Type="Installer">
+    <Build />
+  </Project>
 </Solution>
