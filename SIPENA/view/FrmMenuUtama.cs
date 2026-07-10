@@ -359,5 +359,10 @@ namespace SIPENA.view
         {
             BukaForm(new FrmProdi());
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

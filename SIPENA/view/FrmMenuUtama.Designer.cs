@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.icnProdi = new System.Windows.Forms.PictureBox();
+            this.labelProdi = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -76,9 +78,8 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.icnProdi = new System.Windows.Forms.PictureBox();
-            this.labelProdi = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icnProdi)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -98,7 +99,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.icnProdi)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -136,6 +136,30 @@
             this.panel1.Size = new System.Drawing.Size(232, 673);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // icnProdi
+            // 
+            this.icnProdi.Image = global::SIPENA.Properties.Resources.Matkul;
+            this.icnProdi.Location = new System.Drawing.Point(52, 424);
+            this.icnProdi.Name = "icnProdi";
+            this.icnProdi.Size = new System.Drawing.Size(25, 25);
+            this.icnProdi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icnProdi.TabIndex = 27;
+            this.icnProdi.TabStop = false;
+            this.icnProdi.Click += new System.EventHandler(this.icnProdi_Click);
+            // 
+            // labelProdi
+            // 
+            this.labelProdi.AutoSize = true;
+            this.labelProdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProdi.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelProdi.Location = new System.Drawing.Point(89, 427);
+            this.labelProdi.Name = "labelProdi";
+            this.labelProdi.Size = new System.Drawing.Size(89, 20);
+            this.labelProdi.TabIndex = 26;
+            this.labelProdi.Text = "Data Prodi";
+            this.labelProdi.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelProdi.Click += new System.EventHandler(this.labelProdi_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -493,6 +517,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(252, 126);
             this.panel2.TabIndex = 20;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // lblAngkaMhs
             // 
@@ -660,30 +685,6 @@
             this.pictureBox6.TabIndex = 23;
             this.pictureBox6.TabStop = false;
             // 
-            // icnProdi
-            // 
-            this.icnProdi.Image = global::SIPENA.Properties.Resources.Matkul;
-            this.icnProdi.Location = new System.Drawing.Point(52, 424);
-            this.icnProdi.Name = "icnProdi";
-            this.icnProdi.Size = new System.Drawing.Size(25, 25);
-            this.icnProdi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.icnProdi.TabIndex = 27;
-            this.icnProdi.TabStop = false;
-            this.icnProdi.Click += new System.EventHandler(this.icnProdi_Click);
-            // 
-            // labelProdi
-            // 
-            this.labelProdi.AutoSize = true;
-            this.labelProdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelProdi.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelProdi.Location = new System.Drawing.Point(89, 427);
-            this.labelProdi.Name = "labelProdi";
-            this.labelProdi.Size = new System.Drawing.Size(89, 20);
-            this.labelProdi.TabIndex = 26;
-            this.labelProdi.Text = "Data Prodi";
-            this.labelProdi.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.labelProdi.Click += new System.EventHandler(this.labelProdi_Click);
-            // 
             // FrmMenuUtama
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -704,6 +705,7 @@
             this.Load += new System.EventHandler(this.FrmMenuUtama_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icnProdi)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
@@ -727,7 +729,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.icnProdi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

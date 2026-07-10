@@ -57,7 +57,7 @@
             this.rbAlpha = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSemester = new System.Windows.Forms.MaskedTextBox();
-            this.txtPertemuan = new System.Windows.Forms.MaskedTextBox();
+            this.cmbPertemuan = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPresensi)).BeginInit();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -394,14 +394,33 @@
             this.txtSemester.Size = new System.Drawing.Size(333, 27);
             this.txtSemester.TabIndex = 27;
             // 
-            // txtPertemuan
+            // cmbPertemuan
             // 
-            this.txtPertemuan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPertemuan.Location = new System.Drawing.Point(494, 345);
-            this.txtPertemuan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPertemuan.Name = "txtPertemuan";
-            this.txtPertemuan.Size = new System.Drawing.Size(333, 27);
-            this.txtPertemuan.TabIndex = 28;
+            this.cmbPertemuan.FormattingEnabled = true;
+            this.cmbPertemuan.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18"});
+            this.cmbPertemuan.Location = new System.Drawing.Point(494, 345);
+            this.cmbPertemuan.Name = "cmbPertemuan";
+            this.cmbPertemuan.Size = new System.Drawing.Size(333, 28);
+            this.cmbPertemuan.TabIndex = 29;
+            this.cmbPertemuan.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // FrmPresensi
             // 
@@ -410,8 +429,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(889, 853);
+            this.Controls.Add(this.cmbPertemuan);
             this.Controls.Add(this.dgvPresensi);
-            this.Controls.Add(this.txtPertemuan);
             this.Controls.Add(this.txtSemester);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.rbAlpha);
@@ -470,7 +489,6 @@
         private System.Windows.Forms.RadioButton rbAlpha;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MaskedTextBox txtSemester;
-        private System.Windows.Forms.MaskedTextBox txtPertemuan;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTanggal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPertemuan;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNim;
@@ -478,5 +496,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colMk;
         private System.Windows.Forms.DataGridViewTextBoxColumn Semester;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
+        private System.Windows.Forms.ComboBox cmbPertemuan;
     }
 }

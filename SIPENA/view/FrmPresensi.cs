@@ -48,7 +48,9 @@ namespace SIPENA.view
             // Kosongkan semua inputan di form presensi
             dtpTanggal.Value = DateTime.Now;
             txtKodeMk.Clear();
-            txtPertemuan.Clear();
+
+            // Update: Mengosongkan ComboBox Pertemuan
+            cmbPertemuan.SelectedIndex = -1;
 
             // Kosongkan semua radio button status kehadiran
             rbHadir.Checked = false;
@@ -89,7 +91,10 @@ namespace SIPENA.view
                 // Buka semua inputan lainnya agar mahasiswa bisa mengisi data presensinya
                 txtKodeMk.Enabled = true;
                 txtSemester.Enabled = true;
-                txtPertemuan.Enabled = true;
+
+                // Update: Mengaktifkan ComboBox Pertemuan
+                cmbPertemuan.Enabled = true;
+
                 dtpTanggal.Enabled = true;
                 rbHadir.Enabled = true;
                 rbIzin.Enabled = true;
@@ -110,7 +115,10 @@ namespace SIPENA.view
                 txtNim.Enabled = false;
                 txtKodeMk.Enabled = false;
                 txtSemester.Enabled = false;
-                txtPertemuan.Enabled = false;
+
+                // Update: Menonaktifkan ComboBox Pertemuan
+                cmbPertemuan.Enabled = false;
+
                 dtpTanggal.Enabled = false;
                 rbHadir.Enabled = false;
                 rbIzin.Enabled = false;
@@ -130,7 +138,9 @@ namespace SIPENA.view
                 p.Tanggal = dtpTanggal.Value;
                 p.Nim = txtNim.Text;
                 p.KodeMk = txtKodeMk.Text;
-                p.Pertemuan = Convert.ToInt32(txtPertemuan.Text);
+
+                // Update: Mengambil nilai angka dari ComboBox
+                p.Pertemuan = Convert.ToInt32(cmbPertemuan.Text);
 
                 if (rbHadir.Checked) p.StatusHadir = "Hadir";
                 else if (rbIzin.Checked) p.StatusHadir = "Izin";
@@ -206,16 +216,6 @@ namespace SIPENA.view
             this.Close();
         }
 
-        // Event handler untuk validasi input Pertemuan agar hanya menerima angka
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            if (txtPertemuan.Text.Length > 0 && !txtPertemuan.Text.All(char.IsDigit))
-            {
-                MessageBox.Show("Pertemuan hanya boleh angka!");
-                txtPertemuan.Clear();
-            }
-        }
-
         // Event handler untuk mengambil nilai semester mahasiswa secara otomatis saat NIM diisi
         private void txtNim_Leave(object sender, EventArgs e)
         {
@@ -237,5 +237,11 @@ namespace SIPENA.view
         private void rbIzin_CheckedChanged(object sender, EventArgs e) { }
         private void rbSakit_CheckedChanged(object sender, EventArgs e) { }
         private void rbAlpha_CheckedChanged(object sender, EventArgs e) { }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
+
+        // Update: Validasi dihilangkan karena ComboBox sudah menggunakan DropDownList, 
+        // tapi event ini dibiarkan kosong agar tidak terjadi error pada file Designer.
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void txtPertemuan_MaskInputRejected(object sender, MaskInputRejectedEventArgs e) { }
     }
 }
